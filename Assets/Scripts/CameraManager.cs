@@ -16,10 +16,11 @@ public class CameraManager : MonoBehaviour
     [Range(0.01f, 1.0f)]
     public float SmoothFactor = 0.5f;
 
-    public bool LookAtCoin = false;
+    private bool LookAtCoin = false;
 
-    public bool RotateAroundCoin = true;
+    private bool RotateAroundCoin = true;
 
+    [SerializeField] 
     public float RotationSpeed = 5f;
 
     public float ZoomSpeed = 10f;
@@ -31,6 +32,12 @@ public class CameraManager : MonoBehaviour
 
     private Vector3 targetRotation;
     private Vector3 mouseDelta;
+
+    public Vector2 xPosAngle;
+    public Vector2 yPosAngle;
+    public Vector2 zPosAngle;
+    public Vector2 yRotAngle1;
+    public Vector2 yRotAngle2;
 
     // Start is called before the first frame update
     void Start()
@@ -75,32 +82,40 @@ public class CameraManager : MonoBehaviour
         }
         */
 
-        Debug.Log(transform.rotation.y);
+        
 
-
-        if (transform.position.x < -5.11 && transform.position.x > -5.22)
-        {
-            if(transform.position.y < 6.87 && transform.position.y > 6.72)
+        
+            if (transform.position.x < xPosAngle.y && transform.position.x > xPosAngle.x)
             {
-                if (transform.position.z < 4.13 && transform.position.y > 4.20)
+                Debug.Log("2");
+                if (transform.position.y < yPosAngle.y && transform.position.y > yPosAngle.x)
                 {
-                    if (transform.rotation.y > -0.835 && transform.rotation.y < -0.827)
+                    Debug.Log("3");
+                    if (transform.position.z < zPosAngle.y && transform.position.y > zPosAngle.x)
                     {
-                        GoodAngle = true;
-                    }
-                    else if (transform.rotation.y > 0.827 && transform.rotation.y < 0.835)
-                    {
-                        GoodAngle = true;
-                    }
-                    else
-                    {
-                        GoodAngle = false;
-                        GoodAngleTimer = 0.25f;
+                        Debug.Log("4");
+                        if (transform.rotation.y > yRotAngle1.x && transform.rotation.y < yRotAngle1.y)
+                        {
+                            GoodAngle = true;
+                            Debug.Log("5");
+                        }
+                        else if (transform.rotation.y > yRotAngle2.x && transform.rotation.y < yRotAngle2.y)
+                        {
+                            GoodAngle = true;
+                            Debug.Log("6");
+                        }
+                        else
+                        {
+                            GoodAngle = false;
+                            GoodAngleTimer = 0.25f;
+                        }
                     }
                 }
             }
-        }
         
+
+        //Debug.Log(transform.rotation.y);
+        //Debug.Log(ZoomFactor);
         if (GoodAngle)
         {
             GoodAngleTimer -= Time.deltaTime;
@@ -109,6 +124,8 @@ public class CameraManager : MonoBehaviour
         if (GoodAngleTimer <= 0)
         {
             Debug.Log("YouWon");
+            GoodAngle = false;
+            GoodAngleTimer = 0.25f;
         }
         
         /*
