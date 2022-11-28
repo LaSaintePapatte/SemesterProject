@@ -13,6 +13,9 @@ public class CameraManager : MonoBehaviour
 
     public Transform CoinTransform;
 
+    public GameObject ShatteredCoin;
+    public GameObject Coin;
+
     [Range(0.01f, 1.0f)]
     public float SmoothFactor = 0.5f;
 
@@ -124,8 +127,11 @@ public class CameraManager : MonoBehaviour
         if (GoodAngleTimer <= 0)
         {
             Debug.Log("YouWon");
+            
             GoodAngle = false;
             GoodAngleTimer = 0.25f;
+            Coin.SetActive(true);
+            ShatteredCoin.SetActive(false);
         }
         
         /*
