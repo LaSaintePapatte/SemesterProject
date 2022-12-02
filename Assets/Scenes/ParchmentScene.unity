@@ -468,6 +468,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1114621821}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1114621823 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 967b9f527b0cce44daef36a57ba0eb17,
+    type: 3}
+  m_PrefabInstance: {fileID: 1114621821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1269831301
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,8 +521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e6f0aae383fec34d80ed4639c45fbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MatFrag1: {fileID: 2100000, guid: 5639c80f062f20842b8e53e61b509ea8, type: 2}
-  MatFrag2: {fileID: 2100000, guid: 35d45de5104359a47b35b4e9eb180aaa, type: 2}
+  matFrag1: {fileID: 2100000, guid: 5639c80f062f20842b8e53e61b509ea8, type: 2}
+  matFrag2: {fileID: 2100000, guid: 35d45de5104359a47b35b4e9eb180aaa, type: 2}
+  object1Renderer: {fileID: 1114621823}
+  object2Renderer: {fileID: 1731323925}
 --- !u!1 &1325995810
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,6 +860,12 @@ PrefabInstance:
 --- !u!4 &1731323924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c3a7a4936653ba4eb57925e9fcaa333,
+    type: 3}
+  m_PrefabInstance: {fileID: 1731323923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1731323925 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9c3a7a4936653ba4eb57925e9fcaa333,
     type: 3}
   m_PrefabInstance: {fileID: 1731323923}
   m_PrefabAsset: {fileID: 0}
