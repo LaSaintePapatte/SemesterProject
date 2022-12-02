@@ -33,5 +33,7 @@ public class ParchmentScript : MonoBehaviour
 
         object1Renderer.material.color = Frag1Color;
         object2Renderer.material.color = Frag2Color;
-    } 
+    }
+
+    
 }
