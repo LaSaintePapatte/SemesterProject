@@ -7,31 +7,31 @@ public class CameraManager : MonoBehaviour
 {
     //private Vector3 targetRotation = Vector3.zero;
     //private float watchSpeed = 1;
-    private float CameraOffset = 5f;
+    private float cameraOffset = 5f;
 
     public Camera mainCam;
 
-    public Transform CoinTransform;
+    public Transform modelTransform;
 
-    public GameObject ShatteredCoin;
-    public GameObject Coin;
+    public GameObject shatteredModel;
+    public GameObject model;
 
     [Range(0.01f, 1.0f)]
-    public float SmoothFactor = 0.5f;
+    public float smoothFactor = 0.5f;
 
-    private bool LookAtCoin = false;
+    private bool lookAtCoin = false;
 
-    private bool RotateAroundCoin = true;
+    private bool rotateAroundCoin = true;
 
     [SerializeField] 
-    public float RotationSpeed = 5f;
+    public float rRotationSpeed = 5f;
 
-    public float ZoomSpeed = 10f;
+    public float zoomSpeed = 10f;
 
-    public float ZoomFactor = 1f;
+    public float zoomFactor = 1f;
 
-    private bool GoodAngle = false;
-    private float GoodAngleTimer = 0.25f;
+    private bool goodAngle = false;
+    private float goodAngleTimer = 0.25f;
 
     private Vector3 targetRotation;
     private Vector3 mouseDelta;
@@ -53,9 +53,9 @@ public class CameraManager : MonoBehaviour
     {
 
 
-        if (RotateAroundCoin && Input.GetMouseButton(0))
+        if (rotateAroundCoin && Input.GetMouseButton(0))
         {
-            transform.position = CoinTransform.position;
+            transform.position = modelTransform.position;
 
             mouseDelta = new Vector3(-1 * Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
 
@@ -70,8 +70,8 @@ public class CameraManager : MonoBehaviour
         }
 
         
-        ZoomFactor -= Input.GetAxis("Mouse ScrollWheel");
-        transform.position = transform.forward * -CameraOffset * ZoomFactor;
+        zoomFactor -= Input.GetAxis("Mouse ScrollWheel");
+        transform.position = transform.forward * -cameraOffset * zoomFactor;
 
 
         /*
@@ -88,29 +88,29 @@ public class CameraManager : MonoBehaviour
         
 
         
-            if (transform.position.x < xPosAngle.y && transform.position.x > xPosAngle.x)
+           if (transform.position.x < xPosAngle.y && transform.position.x > xPosAngle.x)
             {
-                Debug.Log("2");
+                //Debug.Log("2");
                 if (transform.position.y < yPosAngle.y && transform.position.y > yPosAngle.x)
                 {
-                    Debug.Log("3");
-                    if (transform.position.z < zPosAngle.y && transform.position.y > zPosAngle.x)
+                    //Debug.Log("3");
+                    if (transform.position.z < zPosAngle.y && transform.position.z > zPosAngle.x)
                     {
                         Debug.Log("4");
-                        if (transform.rotation.y > yRotAngle1.x && transform.rotation.y < yRotAngle1.y)
+                        if (transform.rotation.y < yRotAngle1.y && transform.rotation.y > yRotAngle1.x)
                         {
-                            GoodAngle = true;
+                            goodAngle = true;
                             Debug.Log("5");
                         }
-                        else if (transform.rotation.y > yRotAngle2.x && transform.rotation.y < yRotAngle2.y)
+                        else if (transform.rotation.y < yRotAngle2.y && transform.rotation.y > yRotAngle2.x)
                         {
-                            GoodAngle = true;
+                            goodAngle = true;
                             Debug.Log("6");
                         }
                         else
                         {
-                            GoodAngle = false;
-                            GoodAngleTimer = 0.25f;
+                            goodAngle = false;
+                            goodAngleTimer = 0.25f;
                         }
                     }
                 }
@@ -119,19 +119,19 @@ public class CameraManager : MonoBehaviour
 
         //Debug.Log(transform.rotation.y);
         //Debug.Log(ZoomFactor);
-        if (GoodAngle)
+        if (goodAngle)
         {
-            GoodAngleTimer -= Time.deltaTime;
+            goodAngleTimer -= Time.deltaTime;
         }
-
-        if (GoodAngleTimer <= 0)
+        
+        if (goodAngleTimer <= 0)
         {
             Debug.Log("YouWon");
-            
-            GoodAngle = false;
-            GoodAngleTimer = 0.25f;
-            Coin.SetActive(true);
-            ShatteredCoin.SetActive(false);
+
+            goodAngle = false;
+            goodAngleTimer = 0.25f;
+            model.SetActive(true);
+            shatteredModel.SetActive(false);
         }
         
         /*
