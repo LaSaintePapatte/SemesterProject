@@ -5,29 +5,33 @@ using UnityEngine;
 public class ParchmentScript : MonoBehaviour
 {
 
-    public Material MatFrag1;
-    public Material MatFrag2;
+    public Material matFrag1;
+    public Material matFrag2;
 
-    private bool FragVanish1 = false;
+    private bool fragVanish1 = false;
     private bool FragVanish2 = false;
 
     Color Frag1Color;
     Color Frag2Color;
 
+    public MeshRenderer object1Renderer;
+    public MeshRenderer object2Renderer;
+
     // Start is called before the first frame update
     void Start()
     {
-        Color Frag1Color = MatFrag1.color;
-        Color Frag2Color = MatFrag2.color;
+        Frag1Color = object1Renderer.material.color;
+
+        Frag2Color = object2Renderer.material.color;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Frag1Color.a = Mathf.Lerp(Frag1Color.a, 0, 0.5f);
-        Frag2Color.a = Mathf.Lerp(Frag2Color.a, 0.5f, 0.1f);
+        Frag1Color.a = Mathf.Lerp(Frag1Color.a, 0.0f, 0.01f);
+        Frag2Color.a = Mathf.Lerp(Frag2Color.a, 0.0f, 0.01f);
 
-        MatFrag1.color = Frag1Color;
-        MatFrag2.color = Frag2Color;
+        object1Renderer.material.color = Frag1Color;
+        object2Renderer.material.color = Frag2Color;
     } 
 }
