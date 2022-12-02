@@ -18,6 +18,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     float acceleration = 1f;
 
+    
+    private Vector3 mouseDelta;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKey(KeyCode.Z))
         {
             rb.AddForce(MvtSpeed * transform.forward);
@@ -66,6 +70,38 @@ public class PlayerScript : MonoBehaviour
         {
             rb.AddForce(-MvtSpeed * transform.forward);
         }
+       */
+
+        
+        float moveSpeed = 4 ;
+        //Define the speed at which the object moves.
+
+        float horizontalInput = Input.GetAxis("Horizontal");
+        //Get the value of the Horizontal input axis.
+
+        float verticalInput = Input.GetAxis("Vertical");
+        //Get the value of the Vertical input axis.
+
+        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
+
+
+
+        if (Input.GetMouseButton(0))
+        {
+            mouseDelta = new Vector3(0, Input.GetAxis("Mouse X"), 0); // 
+
+            targetRotation += mouseDelta * Time.deltaTime * 100;
+
+            rb.MoveRotation(Quaternion.Euler(targetRotation * 3));
+
+            /*Quaternion camTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
+            Quaternion camTurnAngleZ = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationSpeed, Vector3.up);
+            
+            CameraOffset = camTurnAngle * CameraOffset;*/
+        }
+
+
+
         /*
         if (Input.GetKey(KeyCode.Q))
         {
