@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - EndLvl1
+  - EndLvl2
+  - EndLvl3
+  - SafeZone
   layers:
   - Default
   - TransparentFX

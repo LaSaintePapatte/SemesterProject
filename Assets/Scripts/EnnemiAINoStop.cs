@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnnemiAI : MonoBehaviour
+public class EnnemiAINoStop : MonoBehaviour
 {
 
     NavMeshAgent agent;
 
     public Transform[] waypoints;
 
-    int waypointIndex = 0;
+    [SerializeField] int waypointIndex = 0;
+
 
     Vector3 target;
 
@@ -28,7 +29,7 @@ public class EnnemiAI : MonoBehaviour
         {
             IterateWaypointIndex();
             UpdateDestination();
-        }
+        }  
     }
 
     void UpdateDestination()
