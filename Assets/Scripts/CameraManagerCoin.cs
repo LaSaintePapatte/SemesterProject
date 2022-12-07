@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class CameraManager : MonoBehaviour
+public class CameraManagerCoin : MonoBehaviour
 {
     //private Vector3 targetRotation = Vector3.zero;
     //private float watchSpeed = 1;
@@ -19,7 +21,7 @@ public class CameraManager : MonoBehaviour
     [Range(0.01f, 1.0f)]
     public float smoothFactor = 0.5f;
 
-    private bool lookAtCoin = false;
+    //private bool lookAtCoin = false;
 
     private bool rotateAroundCoin = true;
 
@@ -31,7 +33,7 @@ public class CameraManager : MonoBehaviour
     public float zoomFactor = 1f;
 
     private bool goodAngle = false;
-    private float goodAngleTimer = 0.25f;
+    private float goodAngleTimer = 0.5f;
 
     private Vector3 targetRotation;
     private Vector3 mouseDelta;
@@ -41,6 +43,9 @@ public class CameraManager : MonoBehaviour
     public Vector2 zPosAngle;
     public Vector2 yRotAngle1;
     public Vector2 yRotAngle2;
+
+    private bool end = false;
+    private float endTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -110,7 +115,7 @@ public class CameraManager : MonoBehaviour
                         else
                         {
                             goodAngle = false;
-                            goodAngleTimer = 0.25f;
+                            goodAngleTimer = 0.5f;
                         }
                     }
                 }
@@ -129,11 +134,21 @@ public class CameraManager : MonoBehaviour
             Debug.Log("YouWon");
 
             goodAngle = false;
-            goodAngleTimer = 0.25f;
+            goodAngleTimer = 0.5f;
             model.SetActive(true);
             shatteredModel.SetActive(false);
+            end = true;
         }
-        
+
+        if (end)
+        {
+            endTimer += Time.deltaTime;
+        }
+
+        if (endTimer > 2.5f)
+        {
+            SceneManager.LoadScene("S_Exfiltration");
+        }
         /*
         if (Input.GetMouseButton(0))
         {

@@ -1,35 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
     public Rigidbody rb;
 
-    [SerializeField] AnimationCurve accelerationCam;
+    //[SerializeField] AnimationCurve accelerationCam;
 
-    private float targetAngle = 0f;
+    public Camera camPlayer;
+    public Camera camShadowAna;
+
+    //private float targetAngle = 0f;
 
     public float MvtSpeed = 100f;
     public float TorqueSpeed = 20f;
 
     private Vector3 targetRotation;
 
-    [SerializeField]
-    float acceleration = 1f;
+    //[SerializeField] float acceleration = 1f;
 
-    
+    //Variable for GameProgression - Items
+    public bool hasCastrum = false;
+    public bool hasParch1 = false;
+    public bool hasParch2 = false;
+    public bool hasParchFrag1 = false;
+    public bool hasParchFrag2 = false;
+    public bool parchRestored1 = false;
+    public bool parchRestored2 = false;
+    public bool talkedPNJ1= false;
+    public bool talkedPNJ2 = false;
+    public bool hasCoin = false;
+    public GameObject walls;
+    public GameObject minigame;
+    //public GameObject HouseGame;
+
     private Vector3 mouseDelta;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        camPlayer.enabled = true;
+        camShadowAna.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        //      MOVEMENT WITHOUT NEW INPUT MANAGER
+
         /*
         if (Input.GetKey(KeyCode.Z))
         {
@@ -70,10 +91,21 @@ public class PlayerScript : MonoBehaviour
         {
             rb.AddForce(-MvtSpeed * transform.forward);
         }
-       */
+       
 
-        
-        float moveSpeed = 4 ;
+        if (Input.GetKey(KeyCode.Q))
+        {
+            rb.AddTorque(-TorqueSpeed * transform.up);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.AddTorque(TorqueSpeed * transform.up);
+        }*/
+
+        //      MOVEMENT WITH NEW INPUTMANAGER
+
+        float moveSpeed = 4;
         //Define the speed at which the object moves.
 
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -100,19 +132,145 @@ public class PlayerScript : MonoBehaviour
             CameraOffset = camTurnAngle * CameraOffset;*/
         }
 
-
-
-        /*
-        if (Input.GetKey(KeyCode.Q))
+        if (hasParchFrag1 && hasParchFrag2 && hasParch2)
         {
-            rb.AddTorque(-TorqueSpeed * transform.up);
+            parchRestored2 = true;
+            hasParchFrag1 = false;
+            hasParchFrag2 = false;
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (parchRestored1 && parchRestored2 && talkedPNJ1 && talkedPNJ2)
         {
-            rb.AddTorque(TorqueSpeed * transform.up);
-        }*/
+            
+            walls.SetActive(false);
+            GameObject coinActivate = GameObject.Find("CoinActivate");
+            coinActivate.SetActive(true);
+        }
+
     }
 
-    
+    private void OnTriggerStay(Collider target)
+    {
+        if (target.tag == "ShadowAna")
+        {
+            if (Input.GetKeyDown(KeyCode.E) && hasParch1 && hasCastrum)
+            {
+                camShadowAna.enabled = !camShadowAna.enabled;
+                camPlayer.enabled = !camPlayer.enabled;
+                if (gameObject.activeInHierarchy)
+                {
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                    gameObject.SetActive(true);
+                }
+            }
+
+        }
+        if (target.tag == "PNJ1")
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !talkedPNJ1)
+            {
+                talkedPNJ1 = true;
+            }
+        }
+        if (target.tag == "PNJ2")
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !talkedPNJ2)
+            {
+                if (talkedPNJ1 && parchRestored1 && parchRestored2)
+                {
+                    talkedPNJ2 = true;
+                }
+
+            }
+        }
+        if (target.tag == "Parchment1")
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !hasParch1)
+            {
+                hasParch1 = true;
+                GameObject parch1 = GameObject.Find("Parchment1");
+                parch1.SetActive(false);
+            }
+        }
+        if (target.tag == "Parchment2")
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !hasParch2)
+            {
+                hasParch2 = true;
+                GameObject parch2 = GameObject.Find("Parchment2");
+                parch2.SetActive(false);
+
+            }
+        }
+        if (target.tag == "ParchFrag1")
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !hasParchFrag1)
+            {
+                hasParchFrag1 = true;
+                GameObject parchFrag1 = GameObject.Find("ParchFrag1");
+                parchFrag1.SetActive(false);
+
+            }
+        }
+        if (target.tag == "ParchFrag2")
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !hasParchFrag2)
+            {
+                hasParchFrag2 = true;
+                GameObject parchFrag2 = GameObject.Find("ParchFrag2");
+                parchFrag2.SetActive(false);
+
+            }
+        }
+        if (target.tag == "Castrum")
+        {
+
+            if (Input.GetKeyDown(KeyCode.E) && !hasCastrum)
+            {
+                hasCastrum = true;
+                GameObject castrum = GameObject.Find("ShadowAnaObj");
+                castrum.SetActive(false);
+            }
+        }
+        if (target.tag == "Coin")
+        {
+
+            if (Input.GetKeyDown(KeyCode.E) && !hasCoin)
+            {
+                hasCoin = true;
+                minigame.SetActive(true);
+
+                camPlayer.enabled = !camPlayer.enabled;
+                if (gameObject.activeInHierarchy)
+                {
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                    gameObject.SetActive(true);
+                }
+            }
+        }
+        if (target.tag == "House")
+        {
+            Debug.Log("HouseCol");
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                minigame.SetActive(true);
+
+                camPlayer.enabled = !camPlayer.enabled;
+                if (gameObject.activeInHierarchy)
+                {
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                    gameObject.SetActive(true);
+                }
+            }
+        }
+    }
 }
