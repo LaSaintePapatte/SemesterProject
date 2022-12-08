@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         float moveSpeed = 5f;
         //Define the speed at which the object moves.
 
-        transform.Translate(new Vector3(moveInputVector.x, rb.velocity.y, moveInputVector.y) * moveSpeed * Time.deltaTime);
+        transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
 
         
     }
@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-        Debug.Log(context);
         if (context.performed) {
             Debug.Log("Interacting");
             
