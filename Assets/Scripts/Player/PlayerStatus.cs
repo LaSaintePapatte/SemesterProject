@@ -1,25 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerStatus : MonoBehaviour
 {
-    public Rigidbody rb;
 
-    //[SerializeField] AnimationCurve accelerationCam;
 
+    
+
+
+    //CAMERAS
     public Camera camPlayer;
     public Camera camShadowAna;
-
-    //private float targetAngle = 0f;
-
-    public float MvtSpeed = 100f;
-    public float TorqueSpeed = 20f;
-
-    private Vector3 targetRotation;
-
-    //[SerializeField] float acceleration = 1f;
 
     //Variable for GameProgression - Items
     public bool hasCastrum = false;
@@ -34,9 +28,7 @@ public class PlayerScript : MonoBehaviour
     public bool hasCoin = false;
     public GameObject walls;
     public GameObject minigame;
-    //public GameObject HouseGame;
-
-    private Vector3 mouseDelta;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +41,39 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
 
-        //      MOVEMENT WITHOUT NEW INPUT MANAGER
 
+
+        //      MOVEMENT WITH NEW INPUTMANAGER
+        /*
+        float moveSpeed = 4;
+        //Define the speed at which the object moves.
+
+        float horizontalInput = Input.GetAxis("Horizontal");
+        //Get the value of the Horizontal input axis.
+
+        float verticalInput = Input.GetAxis("Vertical");
+        //Get the value of the Vertical input axis.
+
+        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
+
+
+
+        if (Input.GetMouseButton(0))
+        {
+            mouseDelta = new Vector3(0, Input.GetAxis("Mouse X"), 0); // 
+
+            targetRotation += mouseDelta * Time.deltaTime * 100;
+
+            rb.MoveRotation(Quaternion.Euler(targetRotation * 3));
+
+            /*Quaternion camTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
+            Quaternion camTurnAngleZ = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationSpeed, Vector3.up);
+
+            CameraOffset = camTurnAngle * CameraOffset;
+        }
+            */
+
+        //      MOVEMENT WITHOUT NEW INPUT MANAGER
         /*
         if (Input.GetKey(KeyCode.Z))
         {
@@ -103,34 +126,6 @@ public class PlayerScript : MonoBehaviour
             rb.AddTorque(TorqueSpeed * transform.up);
         }*/
 
-        //      MOVEMENT WITH NEW INPUTMANAGER
-
-        float moveSpeed = 4;
-        //Define the speed at which the object moves.
-
-        float horizontalInput = Input.GetAxis("Horizontal");
-        //Get the value of the Horizontal input axis.
-
-        float verticalInput = Input.GetAxis("Vertical");
-        //Get the value of the Vertical input axis.
-
-        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
-
-
-
-        if (Input.GetMouseButton(0))
-        {
-            mouseDelta = new Vector3(0, Input.GetAxis("Mouse X"), 0); // 
-
-            targetRotation += mouseDelta * Time.deltaTime * 100;
-
-            rb.MoveRotation(Quaternion.Euler(targetRotation * 3));
-
-            /*Quaternion camTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
-            Quaternion camTurnAngleZ = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationSpeed, Vector3.up);
-            
-            CameraOffset = camTurnAngle * CameraOffset;*/
-        }
 
         if (hasParchFrag1 && hasParchFrag2 && hasParch2)
         {
@@ -259,6 +254,7 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("HouseCol");
             if (Input.GetKeyDown(KeyCode.E))
             {
+                Debug.Log("CoinMinigame");
                 minigame.SetActive(true);
 
                 camPlayer.enabled = !camPlayer.enabled;
@@ -272,5 +268,11 @@ public class PlayerScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnMovement(InputAction.CallbackContext value)
+    {
+        Vector2 inputMovement = value.ReadValue<Vector2>();
+        rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
     }
 }

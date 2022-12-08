@@ -14,14 +14,14 @@ public class Parchment1Script : MonoBehaviour
     public MeshRenderer object2Renderer;
 
     public GameObject player;
-    PlayerScript playerScript;
+    PlayerStatus playerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         FragColor = object1Renderer.material.color;
         player = GameObject.Find("Player");
-        playerScript = player.GetComponent<PlayerScript>();
+        playerScript = player.GetComponent<PlayerStatus>();
         
     }
 

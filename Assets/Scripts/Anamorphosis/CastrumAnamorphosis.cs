@@ -22,13 +22,13 @@ public class CastrumAnamorphosis : MonoBehaviour
 
     public GameObject anamorphisisHouses;
     public GameObject houses;
-    PlayerScript playerScript;
+    PlayerStatus playerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         targetRotation = transform.rotation.eulerAngles;
-        playerScript = player.GetComponent<PlayerScript>();
+        playerScript = player.GetComponent<PlayerStatus>();
 
     }
 
