@@ -8,7 +8,10 @@ public class PlayerStatus : MonoBehaviour
 {
 
 
-    
+    private Vector3 rawInputMovement;
+    private Vector3 mouseDelta;
+    private Vector3 targetRotation;
+    public Rigidbody rb;
 
 
     //CAMERAS
@@ -43,18 +46,18 @@ public class PlayerStatus : MonoBehaviour
 
 
 
-        //      MOVEMENT WITH NEW INPUTMANAGER
-        /*
-        float moveSpeed = 4;
-        //Define the speed at which the object moves.
+        ////      MOVEMENT WITH NEW INPUTMANAGER
+        
+        //float moveSpeed = 4;
+        ////Define the speed at which the object moves.
 
-        float horizontalInput = Input.GetAxis("Horizontal");
-        //Get the value of the Horizontal input axis.
+        //float horizontalInput = Input.GetAxis("Horizontal");
+        ////Get the value of the Horizontal input axis.
 
-        float verticalInput = Input.GetAxis("Vertical");
-        //Get the value of the Vertical input axis.
+        //float verticalInput = Input.GetAxis("Vertical");
+        ////Get the value of the Vertical input axis.
 
-        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
+        //transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
 
 
 
@@ -69,9 +72,9 @@ public class PlayerStatus : MonoBehaviour
             /*Quaternion camTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
             Quaternion camTurnAngleZ = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationSpeed, Vector3.up);
 
-            CameraOffset = camTurnAngle * CameraOffset;
+            CameraOffset = camTurnAngle * CameraOffset;*/
         }
-            */
+
 
         //      MOVEMENT WITHOUT NEW INPUT MANAGER
         /*
