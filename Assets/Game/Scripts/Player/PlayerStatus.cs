@@ -16,7 +16,7 @@ public class PlayerStatus : MonoBehaviour
 
     //CAMERAS
     public Camera camPlayer;
-    public Camera camShadowAna;
+    //public Camera camShadowAna;
 
     //Variable for GameProgression - Items
     public bool hasCastrum = false;
@@ -37,7 +37,7 @@ public class PlayerStatus : MonoBehaviour
     void Start()
     {
         camPlayer.enabled = true;
-        camShadowAna.enabled = false;
+        //camShadowAna.enabled = false;
     }
 
     // Update is called once per frame
@@ -61,19 +61,19 @@ public class PlayerStatus : MonoBehaviour
 
 
 
-        if (Input.GetMouseButton(0))
-        {
-            mouseDelta = new Vector3(0, Input.GetAxis("Mouse X"), 0); // 
+        //if (Input.GetMouseButton(0))
+        //{
+        //    mouseDelta = new Vector3(0, Input.GetAxis("Mouse X"), 0); // 
 
-            targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
+        //    targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
 
-            rb.MoveRotation(Quaternion.Euler(targetRotation));
+        //    rb.MoveRotation(Quaternion.Euler(targetRotation));
 
-            /*Quaternion camTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
-            Quaternion camTurnAngleZ = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationSpeed, Vector3.up);
+        //    /*Quaternion camTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
+        //    Quaternion camTurnAngleZ = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationSpeed, Vector3.up);
 
-            CameraOffset = camTurnAngle * CameraOffset;*/
-        }
+        //    CameraOffset = camTurnAngle * CameraOffset;*/
+        //}
 
 
         //      MOVEMENT WITHOUT NEW INPUT MANAGER
@@ -153,7 +153,7 @@ public class PlayerStatus : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && hasParch1 && hasCastrum)
             {
-                camShadowAna.enabled = !camShadowAna.enabled;
+                //camShadowAna.enabled = !camShadowAna.enabled;
                 camPlayer.enabled = !camPlayer.enabled;
                 if (gameObject.activeInHierarchy)
                 {
@@ -273,9 +273,9 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
-    private void OnMovement(InputAction.CallbackContext value)
-    {
-        Vector2 inputMovement = value.ReadValue<Vector2>();
-        rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
-    }
+    //private void OnMovement(InputAction.CallbackContext value)
+    //{
+    //    Vector2 inputMovement = value.ReadValue<Vector2>();
+    //    rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
+    //}
 }

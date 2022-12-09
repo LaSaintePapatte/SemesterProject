@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
@@ -29,7 +28,7 @@ public class PlayerController : MonoBehaviour
         EnhancedTouchSupport.Enable();
 
 
-        Touch.onFingerDown += Touch_onFingerDown;
+        //Touch.onFingerDown += Touch_onFingerDown;
 
 
 

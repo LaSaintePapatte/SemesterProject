@@ -6,17 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/AnaCoin.unity
+    path: Assets/Game/Scenes/AnaCoin.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Scenes/S_Castle.unity
+  - enabled: 0
+    path: Assets/Game/Scenes/S_Castle.unity
     guid: a9ac131f400627641bc4dde146b7ff55
-  - enabled: 1
-    path: Assets/Scenes/S_Castrum.unity
+  - enabled: 0
+    path: Assets/Game/Scenes/S_Castrum.unity
     guid: 16d21ebdda77a9a43b74cc06d1b8ce23
-  - enabled: 1
-    path: Assets/Scenes/S_Exfiltration.unity
+  - enabled: 0
+    path: Assets/Game/Scenes/S_Exfiltration.unity
     guid: 06b57fbc0c8aa3542995bf7046d0b3c1
+  - enabled: 1
+    path: Assets/TestInput/Assets/WhatUpGames/Scenes/Demo.unity
+    guid: aae17401281656340bf46c92f74eb5b5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: af1023f4707579843a0f73c1c627819e,
       type: 2}
