@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private PlayerControls playerControls;
 
+    private Vector2 startPos;
+    private Vector2 deltaPos;
+    public Vector2 touchVector;
 
     private void Awake()
     {
@@ -21,11 +26,30 @@ public class PlayerController : MonoBehaviour
         playerControls.Player.Enable();
         playerControls.Player.Interact.performed += Interact;
 
+        EnhancedTouchSupport.Enable();
+
+
+        Touch.onFingerDown += Touch_onFingerDown;
+
+
+
+    }
+
+    private void Touch_onFingerDown(Finger obj)
+    {
+        startPos = obj.screenPosition;
+    }
+
+    private void getDelta(Finger obj)
+    {
+        deltaPos = obj.screenPosition - startPos;
     }
 
     private void Update()
     {
         
+
+
 
         ///////////// MOVEMENT /////////////
         Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
@@ -38,18 +62,30 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
 
-        
+
+       
+       
+
+        touchVector = playerControls.Player.Look.ReadValue<Vector2>();
+
+        //Debug.Log(touchVector);
+        //Debug.Log(playerControls.Player.Look);
     }
 
 
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if (context.performed) {
+        if (context.performed) 
+        {
             Debug.Log("Interacting");
-            
         }
         
+    }
+
+    private void Babar()
+    {
+            
     }
 
 
@@ -82,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
     //private void Start()
     //{
-        
+
     //}
 
     //private void Update()

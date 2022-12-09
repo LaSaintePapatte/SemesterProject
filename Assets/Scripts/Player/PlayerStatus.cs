@@ -65,9 +65,9 @@ public class PlayerStatus : MonoBehaviour
         {
             mouseDelta = new Vector3(0, Input.GetAxis("Mouse X"), 0); // 
 
-            targetRotation += mouseDelta * Time.deltaTime * 100;
+            targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
 
-            rb.MoveRotation(Quaternion.Euler(targetRotation * 3));
+            rb.MoveRotation(Quaternion.Euler(targetRotation));
 
             /*Quaternion camTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
             Quaternion camTurnAngleZ = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationSpeed, Vector3.up);
@@ -77,57 +77,57 @@ public class PlayerStatus : MonoBehaviour
 
 
         //      MOVEMENT WITHOUT NEW INPUT MANAGER
-        /*
-        if (Input.GetKey(KeyCode.Z))
-        {
-            rb.AddForce(MvtSpeed * transform.forward);
-        }
+        
+        //if (Input.GetKey(KeyCode.Z))
+        //{
+        //    rb.AddForce(MvtSpeed * transform.forward);
+        //}
 
         
 
-        if (Input.GetKey(KeyCode.Q))
-        {
-            //targetRotation = rb.rotation.eulerAngles + new Vector3(0,-TorqueSpeed,0);
-            targetAngle = Mathf.Lerp(targetAngle, -TorqueSpeed, 0.1f) ;
+        //if (Input.GetKey(KeyCode.Q))
+        //{
+        //    //targetRotation = rb.rotation.eulerAngles + new Vector3(0,-TorqueSpeed,0);
+        //    targetAngle = Mathf.Lerp(targetAngle, -TorqueSpeed, 0.1f) ;
 
-            //rb.rotation = Quaternion.Lerp(rb.rotation, targetRotation, accelerationCam.Evaluate(0.5f));
-        }
+        //    //rb.rotation = Quaternion.Lerp(rb.rotation, targetRotation, accelerationCam.Evaluate(0.5f));
+        //}
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            //targetRotation = rb.rotation.eulerAngles + new Vector3(0, TorqueSpeed, 0);
-            targetAngle = Mathf.Lerp(targetAngle, TorqueSpeed, 0.1f);
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    //targetRotation = rb.rotation.eulerAngles + new Vector3(0, TorqueSpeed, 0);
+        //    targetAngle = Mathf.Lerp(targetAngle, TorqueSpeed, 0.1f);
 
-        }
-        if (!Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.D))
-        {
-            targetAngle = Mathf.Lerp(targetAngle, 0, 0.005f);
-        }
-
-
-            targetRotation = rb.rotation.eulerAngles + new Vector3(0, targetAngle, 0);
+        //}
+        //if (!Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.D))
+        //{
+        //    targetAngle = Mathf.Lerp(targetAngle, 0, 0.005f);
+        //}
 
 
-        Quaternion _newRot = Quaternion.Slerp(rb.rotation, Quaternion.Euler(targetRotation), acceleration * Time.deltaTime);
-
-        rb.MoveRotation(_newRot);
+        //    targetRotation = rb.rotation.eulerAngles + new Vector3(0, targetAngle, 0);
 
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            rb.AddForce(-MvtSpeed * transform.forward);
-        }
+        //Quaternion _newRot = Quaternion.Slerp(rb.rotation, Quaternion.Euler(targetRotation), acceleration * Time.deltaTime);
+
+        //rb.MoveRotation(_newRot);
+
+
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    rb.AddForce(-MvtSpeed * transform.forward);
+        //}
        
 
-        if (Input.GetKey(KeyCode.Q))
-        {
-            rb.AddTorque(-TorqueSpeed * transform.up);
-        }
+        //if (Input.GetKey(KeyCode.Q))
+        //{
+        //    rb.AddTorque(-TorqueSpeed * transform.up);
+        //}
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            rb.AddTorque(TorqueSpeed * transform.up);
-        }*/
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    rb.AddTorque(TorqueSpeed * transform.up);
+        //}
 
 
         if (hasParchFrag1 && hasParchFrag2 && hasParch2)
