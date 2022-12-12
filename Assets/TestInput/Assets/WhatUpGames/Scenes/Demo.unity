@@ -288,6 +288,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6825001588609680156, guid: a694a629395f1f64280110ebeeea8e6e,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Camera
+      objectReference: {fileID: 0}
     - target: {fileID: 6966617267255307474, guid: a694a629395f1f64280110ebeeea8e6e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -617,6 +622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5ec7f85721a584a94beecc2359f38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  MyCamera: {fileID: 0}
   MovementSpeed: 15
   ZoomSpeed: 2
   LookOffset: 1
@@ -624,6 +631,7 @@ MonoBehaviour:
   DefaultZoom: 5
   ZoomMax: 10
   ZoomMin: 1
+  currentZoom: 0
 --- !u!4 &1264387803
 Transform:
   m_ObjectHideFlags: 0
@@ -787,7 +795,7 @@ GameObject:
   - component: {fileID: 1787925329}
   - component: {fileID: 1787925332}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,14 +4,16 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController Instance { get; private set; }
 
-    public Camera MyCamera { get; private set; }
+    [SerializeField] private GameObject player;
+    
+    public Camera MyCamera;
     public float CurrentZoom
     {
         get => currentZoom;
         private set
         {
             currentZoom = value;
-            UpdateCameraTarget();
+            //UpdateCameraTarget();
         }
     }
 
@@ -39,7 +41,8 @@ public class CameraController : MonoBehaviour
     private const float ZoomAmount = 0.5f;
     private Vector3 moveTargetPosition;
     private Vector3 zoomTargetPosition;
-    private float currentZoom;
+    private Vector3 playerPos;
+    [SerializeField] private float currentZoom;
 
     private void Awake()
     {
@@ -70,11 +73,15 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+
+        playerPos = player.transform.position;
+
         //Smoothly move the camera
-        transform.position = Vector3.Lerp(transform.position, moveTargetPosition, Time.deltaTime * MovementSpeed);
+        transform.position = Vector3.Lerp(transform.position, moveTargetPosition + playerPos, Time.deltaTime * MovementSpeed);
 
         //Smoothly zoom the camera
-        MyCamera.transform.localPosition = Vector3.Lerp(MyCamera.transform.localPosition, zoomTargetPosition, Time.deltaTime * ZoomSpeed);
+        //MyCamera.transform.localPosition = Vector3.Lerp(MyCamera.transform.localPosition, zoomTargetPosition, Time.deltaTime * ZoomSpeed);
+        MyCamera.transform.LookAt(playerPos);
     }
 
     /// <summary>
@@ -82,7 +89,7 @@ public class CameraController : MonoBehaviour
     /// </summary>
     private void UpdateCameraTarget()
     {
-        zoomTargetPosition = (Vector3.up * LookOffset) + (Quaternion.AngleAxis(CameraAngle, Vector3.right) * Vector3.back) * currentZoom;
+        zoomTargetPosition =(Vector3.up * LookOffset) + (Quaternion.AngleAxis(CameraAngle, Vector3.right) * Vector3.forward) * currentZoom;
     }
 
     /// <summary>
@@ -91,7 +98,7 @@ public class CameraController : MonoBehaviour
     /// <param name="newPosition">Position that the camera should be moving towards</param>
     public void Move(Vector3 newPosition)
     {
-        moveTargetPosition = transform.position + newPosition;
+        moveTargetPosition =  transform.position + newPosition;
     }
 
     /// <summary>

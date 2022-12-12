@@ -44,15 +44,19 @@ public class TouchController : MonoBehaviour
     void Update()
     {
 
+        
+
         curTouch = playerControls.Player.Look.ReadValue<Vector2>();
 
 
         if (Touch.activeFingers.Count == 1)
         {
-            OnInput(Touch.activeTouches[0]);
+            Debug.Log("1");
+            CharaRota(Touch.activeTouches[0]);
         }
         else if (Touch.activeFingers.Count == 2)
         {
+            Debug.Log("2");
             ZoomCamera(Touch.activeTouches[0], Touch.activeTouches[1]);
         }
     }
@@ -72,10 +76,10 @@ private void OnInput(Touch touch)
         //        ZoomCamera(Touch.activeTouches[0], Touch.activeTouches[1]);
         //    }
         //}
-        if (isCharaRota)
-        {
-            CharaRota(touch);
-        }
+        //if (isCharaRota)
+        //{
+        //    CharaRota(touch);
+        //}
     }
 
     //if (rotateAroundCoin && Input.GetMouseButton(0))
