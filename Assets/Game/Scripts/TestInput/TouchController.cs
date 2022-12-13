@@ -51,6 +51,7 @@ public class TouchController : MonoBehaviour
 
         if (Touch.activeFingers.Count == 1)
         {
+
             Debug.Log("1");
             CharaRota(Touch.activeTouches[0]);
         }
@@ -76,10 +77,10 @@ private void OnInput(Touch touch)
         //        ZoomCamera(Touch.activeTouches[0], Touch.activeTouches[1]);
         //    }
         //}
-        //if (isCharaRota)
-        //{
-        //    CharaRota(touch);
-        //}
+        if (isCharaRota)
+        {
+            CharaRota(touch);
+        }
     }
 
     //if (rotateAroundCoin && Input.GetMouseButton(0))
@@ -111,7 +112,7 @@ private void MoveOrbital (Touch touch)
     {
         Vector3 curTouchDelta = new Vector3(0, touch.delta.normalized.x, 0);
 
-        targetRotation += curTouchDelta * Time.deltaTime * 100;
+        targetRotation += curTouchDelta * Time.deltaTime * 100 * 3;
 
         rb.MoveRotation(Quaternion.Euler(targetRotation));
     }
