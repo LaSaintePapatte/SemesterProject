@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -213,6 +213,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1421023293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 020bf552c464c674a83404d2f41f5ab1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1963234002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1484319518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 29066e2513c57224b8baaa6ee2d23d5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1753201434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1741016701
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,9 +258,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 1741016705}
-  modelTransform: {fileID: 0}
-  shatteredModel: {fileID: 0}
-  model: {fileID: 0}
+  modelTransform: {fileID: 673113187}
+  shatteredModel: {fileID: 1484319518}
+  model: {fileID: 1421023293}
   smoothFactor: 0.5
   rRotationSpeed: 5
   zoomSpeed: 10

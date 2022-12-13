@@ -51,15 +51,15 @@ public class PlayerController : MonoBehaviour
 
 
         ///////////// MOVEMENT /////////////
-        Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
+        //Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
 
-        //float speed = 20f;
-        //rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * speed, ForceMode.Force);
+        ////float speed = 20f;
+        ////rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * speed, ForceMode.Force);
 
-        float moveSpeed = 5f;
-        //Define the speed at which the object moves.
+        //float moveSpeed = 5f;
+        ////Define the speed at which the object moves.
 
-        transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
+        //transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
 
 
        
