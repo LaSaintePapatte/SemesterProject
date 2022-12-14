@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 startPos;
     private Vector2 deltaPos;
-    public Vector2 touchVector;
+    private Vector2 touchVector;
 
     private void Awake()
     {

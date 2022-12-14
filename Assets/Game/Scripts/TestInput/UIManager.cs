@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject player;
 
-    private PlayerController playerControllerScript;
+    private TouchController touchControllerScript;
 
     private Vector2 touchInput = Vector2.zero; 
 
@@ -20,14 +20,14 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        playerControllerScript = player.GetComponent<PlayerController>();
+
+        touchControllerScript = player.GetComponent<TouchController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        touchInput = playerControllerScript.touchVector;
+        touchInput = touchControllerScript.touchVector;
         
         testText.SetText("TouchPos : " + touchInput);
 

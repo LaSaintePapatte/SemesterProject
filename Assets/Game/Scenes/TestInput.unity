@@ -321,7 +321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00424bf4aa7a878429c8478b611dc77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchVector: {x: 0, y: 0}
 --- !u!114 &560705436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +336,7 @@ MonoBehaviour:
   rb: {fileID: 560705434}
   playerInput: {fileID: 0}
   isCharaRota: 1
+  touchVector: {x: 0, y: 0}
   touchSpeed: 10
 --- !u!1 &778596517
 GameObject:

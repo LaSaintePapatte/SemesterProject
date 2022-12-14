@@ -4,6 +4,8 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class CameraManagerCoin : MonoBehaviour
 {
@@ -57,6 +59,19 @@ public class CameraManagerCoin : MonoBehaviour
     void Update()
     {
 
+        //if (Touch.activeTouches[0].startScreenPosition.x < Screen.width / 5)
+        //{
+        //    Debug.Log("1");
+        //    Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
+
+        //    //float speed = 20f;
+        //    //rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * speed, ForceMode.Force);
+
+        //    float moveSpeed = 5f;
+        //    //Define the speed at which the object moves.
+
+        //    transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
+        //}
 
         if (rotateAroundCoin && Input.GetMouseButton(0))
         {
