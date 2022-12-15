@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class CameraManagerCoin : MonoBehaviour
 {
@@ -58,19 +60,20 @@ public class CameraManagerCoin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Touch.activeTouches.Count);
+        Debug.Log(Touch.activeTouches);
 
-        //if (Touch.activeTouches[0].startScreenPosition.x < Screen.width / 5)
+        //if (rotateAroundCoin && Touch.activeTouches.Count >= 1)
         //{
-        //    Debug.Log("1");
-        //    Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
+        //    //Debug.Log("Oui");
 
-        //    //float speed = 20f;
-        //    //rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * speed, ForceMode.Force);
+        //    transform.position = modelTransform.position;
 
-        //    float moveSpeed = 5f;
-        //    //Define the speed at which the object moves.
+        //    mouseDelta = new Vector3(-1 * Touch.activeTouches[0].delta.normalized.y, Touch.activeTouches[0].delta.normalized.x, 0);
 
-        //    transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
+        //    targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
+
+        //    transform.rotation = Quaternion.Euler(targetRotation);
         //}
 
         if (rotateAroundCoin && Input.GetMouseButton(0))
@@ -82,14 +85,9 @@ public class CameraManagerCoin : MonoBehaviour
             targetRotation += mouseDelta * Time.deltaTime * 100;
 
             transform.rotation = Quaternion.Euler(targetRotation * 3);
-
-            /*Quaternion camTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
-            Quaternion camTurnAngleZ = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationSpeed, Vector3.up);
-            
-            CameraOffset = camTurnAngle * CameraOffset;*/
         }
 
-        
+
         zoomFactor -= Input.GetAxis("Mouse ScrollWheel");
         transform.position = transform.forward * -cameraOffset * zoomFactor;
 
@@ -107,7 +105,6 @@ public class CameraManagerCoin : MonoBehaviour
 
         
 
-        
            if (transform.position.x < xPosAngle.y && transform.position.x > xPosAngle.x)
             {
                 //Debug.Log("2");
@@ -137,8 +134,6 @@ public class CameraManagerCoin : MonoBehaviour
             }
         
 
-        //Debug.Log(transform.rotation.y);
-        //Debug.Log(ZoomFactor);
         if (goodAngle)
         {
             goodAngleTimer -= Time.deltaTime;
@@ -164,22 +159,6 @@ public class CameraManagerCoin : MonoBehaviour
         {
             SceneManager.LoadScene("S_Exfiltration");
         }
-        /*
-        if (Input.GetMouseButton(0))
-        {
-            transform.position = Coin.transform.position;
-            camRotation += Input.GetAxis("Mouse X");
-            transform.rotation = Quaternion.Euler(0, camRotation, 0);
-            transform.position -= transform.forward * -1 * 10;
-        }
-
-        Vector3 mouseDelta = new Vector3(-1 * Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
         
-
-        //Debug.Log(rStick);
-
-        targetRotation += mouseDelta * Time.deltaTime * 3 * watchSpeed;
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(targetRotation), 1.5f * Time.deltaTime);*/
     }
 }

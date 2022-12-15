@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class CastrumAnamorphosis : MonoBehaviour
 {
@@ -35,6 +39,17 @@ public class CastrumAnamorphosis : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Touch.activeTouches.Count >= 1)
+        {
+            Debug.Log("Oui");
+
+            mouseDelta = new Vector3(-1 * Touch.activeTouches[0].delta.normalized.y, Touch.activeTouches[0].delta.normalized.x, 0);
+
+            targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
+
+            transform.rotation = Quaternion.Euler(targetRotation);
+        }
+
         if (Input.GetMouseButton(0))
         {
 

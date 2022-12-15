@@ -20,7 +20,9 @@ public class TouchController : MonoBehaviour
 
     public Vector2 touchVector;
 
-    public float touchSpeed = 10f;
+    private float touchSpeed = 10f;
+
+    [SerializeField] private float moveSpeed = 5f;
 
     private float lastMultiTouchDistance;
 
@@ -44,88 +46,77 @@ public class TouchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector2 moveInputVectorKeyboard = playerControls.Player.Move.ReadValue<Vector2>();
 
-        touchVector = playerControls.Player.Look.ReadValue<Vector2>();
+        transform.Translate(new Vector3(moveInputVectorKeyboard.x, 0, moveInputVectorKeyboard.y) * moveSpeed * Time.deltaTime);
 
-        curTouch = playerControls.Player.Look.ReadValue<Vector2>();
+        //touchVector = playerControls.Player.Look.ReadValue<Vector2>();
+
+        //curTouch = playerControls.Player.Look.ReadValue<Vector2>();
+
+        //Debug.Log("1");
+        //Vector2 moveInputVectorKeyBoard = playerControls.Player.Move.ReadValue<Vector2>();
 
 
-        if (Touch.activeTouches[0].startScreenPosition.x < Screen.width / 5)
+
+        //transform.Translate(new Vector3(moveInputVectorKeyBoard.x, 0, moveInputVectorKeyBoard.y) * moveSpeed * Time.deltaTime);
+        if (Touch.activeTouches.Count > 0)
         {
-            Debug.Log("1");
-            Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
+            if (Touch.activeTouches[0].startScreenPosition.x < Screen.width / 5)
+            {
+                Debug.Log("1");
+                Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
 
-            //float speed = 20f;
-            //rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * speed, ForceMode.Force);
+                transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
+            }
 
-            float moveSpeed = 5f;
-            //Define the speed at which the object moves.
+            else if (Touch.activeTouches[0].startScreenPosition.x > Screen.width / 5)
+            {
+                Debug.Log("2");
+                CharaRota(Touch.activeTouches[0]);
+            }
 
-            transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
+
+            if (Touch.activeTouches[1].startScreenPosition.x < Screen.width / 5)
+            {
+                Debug.Log("3");
+                Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
+
+
+                transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
+            }
+
+            else if (Touch.activeTouches[1].startScreenPosition.x > Screen.width / 5)
+            {
+                Debug.Log("4");
+                CharaRota(Touch.activeTouches[1]);
+
+            }
         }
-
-        else if (Touch.activeTouches[0].startScreenPosition.x > Screen.width / 5)
-        {
-            Debug.Log("2");
-            CharaRota(Touch.activeTouches[0]);
-        }
-
-
-        if (Touch.activeTouches[1].startScreenPosition.x < Screen.width / 5)
-        {
-            Debug.Log("3");
-            Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
-
-            //float speed = 20f;
-            //rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * speed, ForceMode.Force);
-
-            float moveSpeed = 5f;
-            //Define the speed at which the object moves.
-
-            transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
-        }
-
-        else if (Touch.activeTouches[1].startScreenPosition.x > Screen.width / 5)
-        {
-            Debug.Log("4");
-            CharaRota(Touch.activeTouches[1]);
-            
-        }
+        
     }
 
 
 
     private void OnInput(Touch touch)
     {
-        //if (isOrbital)
-        //{
-        //    if (Touch.activeTouches.Count == 1)
-        //    {
-        //        MoveOrbital(touch);
-        //    }
-        //    else if (Touch.activeTouches.Count == 2)
-        //    {
-        //        ZoomCamera(Touch.activeTouches[0], Touch.activeTouches[1]);
-        //    }
-        //}
+        if (isOrbital)
+        {
+            if (Touch.activeTouches.Count == 1)
+            {
+                MoveOrbital(touch);
+            }
+            else if (Touch.activeTouches.Count == 2)
+            {
+                ZoomCamera(Touch.activeTouches[0], Touch.activeTouches[1]);
+            }
+        }
         if (isCharaRota)
         {
             CharaRota(touch);
         }
     }
 
-    //if (rotateAroundCoin && Input.GetMouseButton(0))
-    //    {
-    //        transform.position = modelTransform.position;
-
-    //        mouseDelta = new Vector3(-1 * Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
-
-    //        targetRotation += mouseDelta* Time.deltaTime * 100;
-
-    //        transform.rotation = Quaternion.Euler(targetRotation* 3);
-
-            
-    //}
 
 private void MoveOrbital (Touch touch)
     {

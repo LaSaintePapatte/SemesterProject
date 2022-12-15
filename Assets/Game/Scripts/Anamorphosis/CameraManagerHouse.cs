@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class CameraManagerHouse : MonoBehaviour
 {
@@ -56,6 +58,18 @@ public class CameraManagerHouse : MonoBehaviour
     void Update()
     {
 
+        if (rotateAroundCoin && Touch.activeTouches.Count >= 1)
+        {
+            Debug.Log("Oui");
+
+            transform.position = modelTransform.position;
+
+            mouseDelta = new Vector3(-1 * Touch.activeTouches[0].delta.normalized.y, Touch.activeTouches[0].delta.normalized.x, 0);
+
+            targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
+
+            transform.rotation = Quaternion.Euler(targetRotation);
+        }
 
         if (rotateAroundCoin && Input.GetMouseButton(0))
         {

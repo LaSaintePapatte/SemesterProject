@@ -2411,7 +2411,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681467760}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d5bac2428cf8bc44909587b9f3e146d, type: 3}
   m_Name: 
@@ -2458,7 +2458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00424bf4aa7a878429c8478b611dc77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchVector: {x: 0, y: 0}
 --- !u!114 &681467773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2474,7 +2473,8 @@ MonoBehaviour:
   rb: {fileID: 681467766}
   playerInput: {fileID: 0}
   isCharaRota: 1
-  touchSpeed: 10
+  touchVector: {x: 0, y: 0}
+  moveSpeed: 5
 --- !u!1 &750363510
 GameObject:
   m_ObjectHideFlags: 0

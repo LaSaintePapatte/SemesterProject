@@ -16,7 +16,7 @@ public class PlayerStatus : MonoBehaviour
 
     //CAMERAS
     public Camera camPlayer;
-    //public Camera camShadowAna;
+    public Camera camShadowAna;
 
     //Variable for GameProgression - Items
     public bool hasCastrum = false;
@@ -155,6 +155,7 @@ public class PlayerStatus : MonoBehaviour
             {
                 //camShadowAna.enabled = !camShadowAna.enabled;
                 camPlayer.enabled = !camPlayer.enabled;
+                camShadowAna.enabled = !camShadowAna.enabled;
                 if (gameObject.activeInHierarchy)
                 {
                     gameObject.SetActive(false);
