@@ -13,7 +13,9 @@ public class CameraManagerCoin : MonoBehaviour
 {
     //private Vector3 targetRotation = Vector3.zero;
     //private float watchSpeed = 1;
-    private float cameraOffset = 5f;
+
+    private PlayerControls playerControls;
+    public float cameraOffset = 5f;
 
     public Camera mainCam;
 
@@ -32,9 +34,9 @@ public class CameraManagerCoin : MonoBehaviour
     [SerializeField] 
     public float rRotationSpeed = 5f;
 
-    public float zoomSpeed = 10f;
+    //public float zoomSpeed = 10f;
 
-    public float zoomFactor = 1f;
+    //public float zoomFactor = 1f;
 
     private bool goodAngle = false;
     private float goodAngleTimer = 0.5f;
@@ -51,6 +53,15 @@ public class CameraManagerCoin : MonoBehaviour
     private bool end = false;
     private float endTimer = 0;
 
+
+    private void Awake()
+    {
+
+        playerControls = new PlayerControls();
+        playerControls.Player.Enable();
+
+        EnhancedTouchSupport.Enable();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -60,48 +71,33 @@ public class CameraManagerCoin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Touch.activeTouches.Count);
-        Debug.Log(Touch.activeTouches);
+        Debug.Log(cameraOffset);
 
-        //if (rotateAroundCoin && Touch.activeTouches.Count >= 1)
-        //{
-        //    //Debug.Log("Oui");
 
-        //    transform.position = modelTransform.position;
-
-        //    mouseDelta = new Vector3(-1 * Touch.activeTouches[0].delta.normalized.y, Touch.activeTouches[0].delta.normalized.x, 0);
-
-        //    targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
-
-        //    transform.rotation = Quaternion.Euler(targetRotation);
-        //}
-
-        if (rotateAroundCoin && Input.GetMouseButton(0))
+        if (Touch.activeTouches.Count == 1)
         {
             transform.position = modelTransform.position;
 
-            mouseDelta = new Vector3(-1 * Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+            //mouseDelta = new Vector3(-1 * Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
 
-            targetRotation += mouseDelta * Time.deltaTime * 100;
+            //targetRotation += mouseDelta * Time.deltaTime * 100;
 
-            transform.rotation = Quaternion.Euler(targetRotation * 3);
+            //transform.rotation = Quaternion.Euler(targetRotation * 3);
+
+            Vector3 curTouchDelta = new Vector3(-1 * Touch.activeTouches[0].delta.normalized.y, Touch.activeTouches[0].delta.normalized.x, 0);
+
+            targetRotation += curTouchDelta * Time.deltaTime * 100/3;
+
+            transform.rotation = Quaternion.Euler(targetRotation);
+            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(targetRotation), 1f);
         }
 
+        cameraOffset = Mathf.Clamp(cameraOffset, 1f, 10f);
+        //zoomFactor -= Input.GetAxis("Mouse ScrollWheel");
+        transform.position = transform.forward * -cameraOffset;
 
-        zoomFactor -= Input.GetAxis("Mouse ScrollWheel");
-        transform.position = transform.forward * -cameraOffset * zoomFactor;
 
 
-        /*
-        Vector3 NewPos = CoinTransform.position + CameraOffset * ZoomFactor;
-
-        transform.position = Vector3.Slerp(transform.position, NewPos, SmoothFactor);
-
-        if (LookAtCoin || RotateAroundCoin)
-        {
-            transform.LookAt(CoinTransform);
-        }
-        */
 
         
 

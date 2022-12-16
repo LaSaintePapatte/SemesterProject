@@ -53,15 +53,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Click"",
-                    ""type"": ""Button"",
-                    ""id"": ""135f229a-b683-465c-b365-d3a5309dddec"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -189,7 +180,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -204,17 +195,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Touch"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6269abda-1686-4dbe-99f8-2e02adcc9b80"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -240,15 +220,72 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""TouchMinigame"",
+            ""id"": ""245739fe-75af-49e3-b989-dd15aae23ba2"",
+            ""actions"": [
+                {
+                    ""name"": ""PrimaryFingerPos"",
+                    ""type"": ""Value"",
+                    ""id"": ""e62ad9b8-d0ec-4ae4-9f5c-4c5879a72948"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SecondaryFingerPos"",
+                    ""type"": ""Value"",
+                    ""id"": ""bb9103b0-6b88-4fdd-8222-1467459d4df5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SecondaryTouchContact"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b67ef83-931e-4fc6-98f8-0b1d213a6cad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""dbbc1889-9dd9-4c81-a2d8-c3358a9a10c2"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryFingerPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bf49267b-ec06-4027-b8ac-2becb52a279f"",
-                    ""path"": ""<Mouse>/press"",
+                    ""id"": ""0b11f997-c4f1-4898-abf4-042b4fa4a732"",
+                    ""path"": ""<Touchscreen>/touch1/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Click"",
+                    ""groups"": """",
+                    ""action"": ""SecondaryFingerPos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71657a88-ba89-4646-ba0d-e50037891186"",
+                    ""path"": ""<Touchscreen>/touch1/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryTouchContact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -839,7 +876,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
+        // TouchMinigame
+        m_TouchMinigame = asset.FindActionMap("TouchMinigame", throwIfNotFound: true);
+        m_TouchMinigame_PrimaryFingerPos = m_TouchMinigame.FindAction("PrimaryFingerPos", throwIfNotFound: true);
+        m_TouchMinigame_SecondaryFingerPos = m_TouchMinigame.FindAction("SecondaryFingerPos", throwIfNotFound: true);
+        m_TouchMinigame_SecondaryTouchContact = m_TouchMinigame.FindAction("SecondaryTouchContact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -914,7 +955,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_Click;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -922,7 +962,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputAction @Click => m_Wrapper.m_Player_Click;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -941,9 +980,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Click.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
-                @Click.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
-                @Click.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -957,13 +993,59 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @Click.started += instance.OnClick;
-                @Click.performed += instance.OnClick;
-                @Click.canceled += instance.OnClick;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // TouchMinigame
+    private readonly InputActionMap m_TouchMinigame;
+    private ITouchMinigameActions m_TouchMinigameActionsCallbackInterface;
+    private readonly InputAction m_TouchMinigame_PrimaryFingerPos;
+    private readonly InputAction m_TouchMinigame_SecondaryFingerPos;
+    private readonly InputAction m_TouchMinigame_SecondaryTouchContact;
+    public struct TouchMinigameActions
+    {
+        private @PlayerControls m_Wrapper;
+        public TouchMinigameActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PrimaryFingerPos => m_Wrapper.m_TouchMinigame_PrimaryFingerPos;
+        public InputAction @SecondaryFingerPos => m_Wrapper.m_TouchMinigame_SecondaryFingerPos;
+        public InputAction @SecondaryTouchContact => m_Wrapper.m_TouchMinigame_SecondaryTouchContact;
+        public InputActionMap Get() { return m_Wrapper.m_TouchMinigame; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TouchMinigameActions set) { return set.Get(); }
+        public void SetCallbacks(ITouchMinigameActions instance)
+        {
+            if (m_Wrapper.m_TouchMinigameActionsCallbackInterface != null)
+            {
+                @PrimaryFingerPos.started -= m_Wrapper.m_TouchMinigameActionsCallbackInterface.OnPrimaryFingerPos;
+                @PrimaryFingerPos.performed -= m_Wrapper.m_TouchMinigameActionsCallbackInterface.OnPrimaryFingerPos;
+                @PrimaryFingerPos.canceled -= m_Wrapper.m_TouchMinigameActionsCallbackInterface.OnPrimaryFingerPos;
+                @SecondaryFingerPos.started -= m_Wrapper.m_TouchMinigameActionsCallbackInterface.OnSecondaryFingerPos;
+                @SecondaryFingerPos.performed -= m_Wrapper.m_TouchMinigameActionsCallbackInterface.OnSecondaryFingerPos;
+                @SecondaryFingerPos.canceled -= m_Wrapper.m_TouchMinigameActionsCallbackInterface.OnSecondaryFingerPos;
+                @SecondaryTouchContact.started -= m_Wrapper.m_TouchMinigameActionsCallbackInterface.OnSecondaryTouchContact;
+                @SecondaryTouchContact.performed -= m_Wrapper.m_TouchMinigameActionsCallbackInterface.OnSecondaryTouchContact;
+                @SecondaryTouchContact.canceled -= m_Wrapper.m_TouchMinigameActionsCallbackInterface.OnSecondaryTouchContact;
+            }
+            m_Wrapper.m_TouchMinigameActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @PrimaryFingerPos.started += instance.OnPrimaryFingerPos;
+                @PrimaryFingerPos.performed += instance.OnPrimaryFingerPos;
+                @PrimaryFingerPos.canceled += instance.OnPrimaryFingerPos;
+                @SecondaryFingerPos.started += instance.OnSecondaryFingerPos;
+                @SecondaryFingerPos.performed += instance.OnSecondaryFingerPos;
+                @SecondaryFingerPos.canceled += instance.OnSecondaryFingerPos;
+                @SecondaryTouchContact.started += instance.OnSecondaryTouchContact;
+                @SecondaryTouchContact.performed += instance.OnSecondaryTouchContact;
+                @SecondaryTouchContact.canceled += instance.OnSecondaryTouchContact;
+            }
+        }
+    }
+    public TouchMinigameActions @TouchMinigame => new TouchMinigameActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1119,7 +1201,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnClick(InputAction.CallbackContext context);
+    }
+    public interface ITouchMinigameActions
+    {
+        void OnPrimaryFingerPos(InputAction.CallbackContext context);
+        void OnSecondaryFingerPos(InputAction.CallbackContext context);
+        void OnSecondaryTouchContact(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

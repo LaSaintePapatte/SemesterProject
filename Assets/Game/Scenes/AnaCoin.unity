@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964128, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -257,14 +257,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100983cfbcfda864bae91d1833bce724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraOffset: 5
   mainCam: {fileID: 1741016705}
   modelTransform: {fileID: 673113187}
   shatteredModel: {fileID: 1484319518}
   model: {fileID: 1421023293}
   smoothFactor: 0.5
   rRotationSpeed: 5
-  zoomSpeed: 10
-  zoomFactor: 1
   xPosAngle: {x: -7.14, y: -6.37}
   yPosAngle: {x: 5.58, y: 6.25}
   zPosAngle: {x: 0, y: 0.17}
@@ -552,6 +551,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 020bf552c464c674a83404d2f41f5ab1, type: 3}
+--- !u!1 &2086956056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2086956058}
+  - component: {fileID: 2086956057}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2086956057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086956056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2479f4c91b986f9489aedd750e901cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinGameScript: {fileID: 1741016702}
+--- !u!4 &2086956058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086956056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1123.8179, y: 771.8847, z: 4.0490026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2064295612089750672
 PrefabInstance:
   m_ObjectHideFlags: 0

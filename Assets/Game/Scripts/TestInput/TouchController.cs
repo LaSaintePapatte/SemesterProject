@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.SceneManagement;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
@@ -11,11 +12,12 @@ public class TouchController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerControls playerControls;
+    [SerializeField] private Camera camPlayer;
 
     private Vector2 curTouch;
     private Vector3 targetRotation;
 
-    private bool isOrbital = false;
+    [SerializeField] private bool isOrbital = false;
     [SerializeField] private bool isCharaRota = true;
 
     public Vector2 touchVector;
@@ -46,54 +48,65 @@ public class TouchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 moveInputVectorKeyboard = playerControls.Player.Move.ReadValue<Vector2>();
 
-        transform.Translate(new Vector3(moveInputVectorKeyboard.x, 0, moveInputVectorKeyboard.y) * moveSpeed * Time.deltaTime);
-
-        //touchVector = playerControls.Player.Look.ReadValue<Vector2>();
-
-        //curTouch = playerControls.Player.Look.ReadValue<Vector2>();
-
-        //Debug.Log("1");
-        //Vector2 moveInputVectorKeyBoard = playerControls.Player.Move.ReadValue<Vector2>();
-
-
-
-        //transform.Translate(new Vector3(moveInputVectorKeyBoard.x, 0, moveInputVectorKeyBoard.y) * moveSpeed * Time.deltaTime);
-        if (Touch.activeTouches.Count > 0)
+        if (isCharaRota)
         {
-            if (Touch.activeTouches[0].startScreenPosition.x < Screen.width / 5)
+            //CharaMove();
+
+            if (Touch.activeTouches.Count > 0)
             {
-                Debug.Log("1");
-                Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
 
-                transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
-            }
+                if (Touch.activeTouches.Count > 0 && Touch.activeTouches[0].phase == TouchPhase.Began)
+                {
+                    
+                    Ray ray = camPlayer.ScreenPointToRay(Touch.activeTouches[0].screenPosition);
+                    RaycastHit hit;
 
-            else if (Touch.activeTouches[0].startScreenPosition.x > Screen.width / 5)
-            {
-                Debug.Log("2");
-                CharaRota(Touch.activeTouches[0]);
-            }
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        Debug.Log("Babar");
+                        if (hit.collider != null)
+                        {
+                            if (hit.collider.gameObject.CompareTag("House"))
+                            {
+                                SceneManager.LoadScene("S_Castrum");
+                            }
+                        }
+                    }
+                }
+                if (Touch.activeTouches[0].startScreenPosition.x < Screen.width / 5)
+                {
+                    CharaMove();
+                }
 
+                else if (Touch.activeTouches[0].startScreenPosition.x > Screen.width / 5)
+                {
+                    CharaRota(Touch.activeTouches[0]);
+                }
 
-            if (Touch.activeTouches[1].startScreenPosition.x < Screen.width / 5)
-            {
-                Debug.Log("3");
-                Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
+                if (Touch.activeTouches.Count > 1)
+                {
+                    if (Touch.activeTouches[1].startScreenPosition.x < Screen.width / 5)
+                    {
+                        CharaMove();
+                    }
 
-
-                transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
-            }
-
-            else if (Touch.activeTouches[1].startScreenPosition.x > Screen.width / 5)
-            {
-                Debug.Log("4");
-                CharaRota(Touch.activeTouches[1]);
-
+                    else if (Touch.activeTouches[1].startScreenPosition.x > Screen.width / 5)
+                    {
+                        CharaRota(Touch.activeTouches[1]);
+                    }
+                }
             }
         }
+
         
+        if (isOrbital)
+        {
+            if(Touch.activeTouches.Count == 1)
+            {
+                MoveOrbital(Touch.activeTouches[0]);
+            }
+        }
     }
 
 
@@ -137,6 +150,14 @@ private void MoveOrbital (Touch touch)
         targetRotation += curTouchDelta * Time.deltaTime * 100 * 3;
 
         rb.MoveRotation(Quaternion.Euler(targetRotation));
+    }
+
+    private void CharaMove()
+    {
+        Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
+
+        //transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
+        rb.AddForce(rb.rotation *  new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * 12);
     }
 
     private void ZoomCamera(Touch firstTouch, Touch secondTouch)
