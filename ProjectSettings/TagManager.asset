@@ -3,7 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - EndLvl1
+  - EndLvl2
+  - EndLvl3
+  - SafeZone
+  - PNJ1
+  - PNJ2
+  - Coin
+  - ShadowAna
+  - Parchment1
+  - Parchment2
+  - ParchFrag1
+  - ParchFrag2
+  - Castrum
+  - House
   layers:
   - Default
   - TransparentFX
