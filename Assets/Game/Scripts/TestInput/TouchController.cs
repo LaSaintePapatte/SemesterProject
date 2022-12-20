@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
@@ -21,8 +22,6 @@ public class TouchController : MonoBehaviour
     [SerializeField] private bool isCharaRota = true;
 
     public Vector2 touchVector;
-
-    private float touchSpeed = 10f;
 
     [SerializeField] private float moveSpeed = 5f;
 
@@ -58,21 +57,7 @@ public class TouchController : MonoBehaviour
 
                 if (Touch.activeTouches.Count > 0 && Touch.activeTouches[0].phase == TouchPhase.Began)
                 {
-                    
-                    Ray ray = camPlayer.ScreenPointToRay(Touch.activeTouches[0].screenPosition);
-                    RaycastHit hit;
-
-                    if (Physics.Raycast(ray, out hit))
-                    {
-                        Debug.Log("Babar");
-                        if (hit.collider != null)
-                        {
-                            if (hit.collider.gameObject.CompareTag("House"))
-                            {
-                                SceneManager.LoadScene("S_Castrum");
-                            }
-                        }
-                    }
+                    Interact();
                 }
                 if (Touch.activeTouches[0].startScreenPosition.x < Screen.width / 5)
                 {
@@ -110,6 +95,23 @@ public class TouchController : MonoBehaviour
     }
 
 
+    private void Interact()
+    {
+        Ray ray = camPlayer.ScreenPointToRay(Touch.activeTouches[0].screenPosition);
+        RaycastHit hit;
+
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider != null)
+            {
+                if (hit.collider.gameObject.CompareTag("House"))
+                {
+                    SceneManager.LoadScene("S_Castrum");
+                }
+            }
+        }
+    }
 
     private void OnInput(Touch touch)
     {
@@ -157,7 +159,8 @@ private void MoveOrbital (Touch touch)
         Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
 
         //transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
-        rb.AddForce(rb.rotation *  new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * 12);
+        rb.AddForce(rb.rotation *  new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * 5);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 5f);
     }
 
     private void ZoomCamera(Touch firstTouch, Touch secondTouch)

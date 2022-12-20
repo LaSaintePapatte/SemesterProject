@@ -45,91 +45,6 @@ public class PlayerStatus : MonoBehaviour
     {
 
 
-
-        ////      MOVEMENT WITH NEW INPUTMANAGER
-        
-        //float moveSpeed = 4;
-        ////Define the speed at which the object moves.
-
-        //float horizontalInput = Input.GetAxis("Horizontal");
-        ////Get the value of the Horizontal input axis.
-
-        //float verticalInput = Input.GetAxis("Vertical");
-        ////Get the value of the Vertical input axis.
-
-        //transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime);
-
-
-
-        //if (Input.GetMouseButton(0))
-        //{
-        //    mouseDelta = new Vector3(0, Input.GetAxis("Mouse X"), 0); // 
-
-        //    targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
-
-        //    rb.MoveRotation(Quaternion.Euler(targetRotation));
-
-        //    /*Quaternion camTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
-        //    Quaternion camTurnAngleZ = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationSpeed, Vector3.up);
-
-        //    CameraOffset = camTurnAngle * CameraOffset;*/
-        //}
-
-
-        //      MOVEMENT WITHOUT NEW INPUT MANAGER
-        
-        //if (Input.GetKey(KeyCode.Z))
-        //{
-        //    rb.AddForce(MvtSpeed * transform.forward);
-        //}
-
-        
-
-        //if (Input.GetKey(KeyCode.Q))
-        //{
-        //    //targetRotation = rb.rotation.eulerAngles + new Vector3(0,-TorqueSpeed,0);
-        //    targetAngle = Mathf.Lerp(targetAngle, -TorqueSpeed, 0.1f) ;
-
-        //    //rb.rotation = Quaternion.Lerp(rb.rotation, targetRotation, accelerationCam.Evaluate(0.5f));
-        //}
-
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    //targetRotation = rb.rotation.eulerAngles + new Vector3(0, TorqueSpeed, 0);
-        //    targetAngle = Mathf.Lerp(targetAngle, TorqueSpeed, 0.1f);
-
-        //}
-        //if (!Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.D))
-        //{
-        //    targetAngle = Mathf.Lerp(targetAngle, 0, 0.005f);
-        //}
-
-
-        //    targetRotation = rb.rotation.eulerAngles + new Vector3(0, targetAngle, 0);
-
-
-        //Quaternion _newRot = Quaternion.Slerp(rb.rotation, Quaternion.Euler(targetRotation), acceleration * Time.deltaTime);
-
-        //rb.MoveRotation(_newRot);
-
-
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    rb.AddForce(-MvtSpeed * transform.forward);
-        //}
-       
-
-        //if (Input.GetKey(KeyCode.Q))
-        //{
-        //    rb.AddTorque(-TorqueSpeed * transform.up);
-        //}
-
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    rb.AddTorque(TorqueSpeed * transform.up);
-        //}
-
-
         if (hasParchFrag1 && hasParchFrag2 && hasParch2)
         {
             parchRestored2 = true;
@@ -151,7 +66,7 @@ public class PlayerStatus : MonoBehaviour
     {
         if (target.tag == "ShadowAna")
         {
-            if (Input.GetKeyDown(KeyCode.E) && hasParch1 && hasCastrum)
+            if (/*Input.GetKey(KeyCode.E) &&*/ hasParch1 && hasCastrum)
             {
                 //camShadowAna.enabled = !camShadowAna.enabled;
                 camPlayer.enabled = !camPlayer.enabled;
@@ -169,14 +84,14 @@ public class PlayerStatus : MonoBehaviour
         }
         if (target.tag == "PNJ1")
         {
-            if (Input.GetKeyDown(KeyCode.E) && !talkedPNJ1)
+            if (  !talkedPNJ1)
             {
                 talkedPNJ1 = true;
             }
         }
         if (target.tag == "PNJ2")
         {
-            if (Input.GetKeyDown(KeyCode.E) && !talkedPNJ2)
+            if (  !talkedPNJ2)
             {
                 if (talkedPNJ1 && parchRestored1 && parchRestored2)
                 {
@@ -187,7 +102,7 @@ public class PlayerStatus : MonoBehaviour
         }
         if (target.tag == "Parchment1")
         {
-            if (Input.GetKeyDown(KeyCode.E) && !hasParch1)
+            if (  !hasParch1)
             {
                 hasParch1 = true;
                 GameObject parch1 = GameObject.Find("Parchment1");
@@ -196,7 +111,7 @@ public class PlayerStatus : MonoBehaviour
         }
         if (target.tag == "Parchment2")
         {
-            if (Input.GetKeyDown(KeyCode.E) && !hasParch2)
+            if (  !hasParch2)
             {
                 hasParch2 = true;
                 GameObject parch2 = GameObject.Find("Parchment2");
@@ -206,7 +121,7 @@ public class PlayerStatus : MonoBehaviour
         }
         if (target.tag == "ParchFrag1")
         {
-            if (Input.GetKeyDown(KeyCode.E) && !hasParchFrag1)
+            if (  !hasParchFrag1)
             {
                 hasParchFrag1 = true;
                 GameObject parchFrag1 = GameObject.Find("ParchFrag1");
@@ -216,7 +131,7 @@ public class PlayerStatus : MonoBehaviour
         }
         if (target.tag == "ParchFrag2")
         {
-            if (Input.GetKeyDown(KeyCode.E) && !hasParchFrag2)
+            if (  !hasParchFrag2)
             {
                 hasParchFrag2 = true;
                 GameObject parchFrag2 = GameObject.Find("ParchFrag2");
@@ -227,7 +142,7 @@ public class PlayerStatus : MonoBehaviour
         if (target.tag == "Castrum")
         {
 
-            if (Input.GetKeyDown(KeyCode.E) && !hasCastrum)
+            if (  !hasCastrum)
             {
                 hasCastrum = true;
                 GameObject castrum = GameObject.Find("ShadowAnaObj");
@@ -237,7 +152,7 @@ public class PlayerStatus : MonoBehaviour
         if (target.tag == "Coin")
         {
 
-            if (Input.GetKeyDown(KeyCode.E) && !hasCoin)
+            if (!hasCoin)
             {
                 hasCoin = true;
                 minigame.SetActive(true);
@@ -256,7 +171,7 @@ public class PlayerStatus : MonoBehaviour
         if (target.tag == "House")
         {
             Debug.Log("HouseCol");
-            if (Input.GetKeyDown(KeyCode.E))
+            if (true)
             {
                 Debug.Log("CoinMinigame");
                 minigame.SetActive(true);

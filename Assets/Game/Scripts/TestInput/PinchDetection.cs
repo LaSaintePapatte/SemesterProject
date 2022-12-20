@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PinchDetection : MonoBehaviour
 {
-    private float zoomSpeed = 5f;
 
-    [SerializeField] private CameraManagerCoin coinGameScript;
+    [SerializeField] private AnaCamManager coinGameScript;
     private PlayerControls controls;
     private Coroutine zoomCoroutine;
     //[SerializeField] private Transform cameraTransform;
