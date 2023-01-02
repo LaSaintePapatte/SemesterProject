@@ -15,6 +15,8 @@ public class TouchController : MonoBehaviour
     [SerializeField] private PlayerControls playerControls;
     [SerializeField] private Camera camPlayer;
 
+    [SerializeField] private InteractScript interactScript;
+
     private Vector2 curTouch;
     private Vector3 targetRotation;
 
@@ -57,7 +59,7 @@ public class TouchController : MonoBehaviour
 
                 if (Touch.activeTouches.Count > 0 && Touch.activeTouches[0].phase == TouchPhase.Began)
                 {
-                    Interact();
+                    interactScript.Interact();
                 }
                 if (Touch.activeTouches[0].startScreenPosition.x < Screen.width / 5)
                 {
@@ -95,23 +97,23 @@ public class TouchController : MonoBehaviour
     }
 
 
-    private void Interact()
-    {
-        Ray ray = camPlayer.ScreenPointToRay(Touch.activeTouches[0].screenPosition);
-        RaycastHit hit;
+    //private void Interact()
+    //{
+    //    Ray ray = camPlayer.ScreenPointToRay(Touch.activeTouches[0].screenPosition);
+    //    RaycastHit hit;
 
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.collider != null)
-            {
-                if (hit.collider.gameObject.CompareTag("House"))
-                {
-                    SceneManager.LoadScene("S_Castrum");
-                }
-            }
-        }
-    }
+    //    if (Physics.Raycast(ray, out hit))
+    //    {
+    //        if (hit.collider != null)
+    //        {
+    //            if (hit.collider.gameObject.CompareTag("House"))
+    //            {
+    //                SceneManager.LoadScene("S_Castrum");
+    //            }
+    //        }
+    //    }
+    //}
 
     private void OnInput(Touch touch)
     {
@@ -149,7 +151,7 @@ private void MoveOrbital (Touch touch)
     {
         Vector3 curTouchDelta = new Vector3(0, touch.delta.normalized.x, 0);
 
-        targetRotation += curTouchDelta * Time.deltaTime * 100 * 3;
+        targetRotation += curTouchDelta * Time.deltaTime * 100;
 
         rb.MoveRotation(Quaternion.Euler(targetRotation));
     }
@@ -160,7 +162,7 @@ private void MoveOrbital (Touch touch)
 
         //transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
         rb.AddForce(rb.rotation *  new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * 5);
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 5f);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 7.5f);
     }
 
     private void ZoomCamera(Touch firstTouch, Touch secondTouch)

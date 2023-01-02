@@ -16,16 +16,18 @@ public class CastrumAnamorphosis : MonoBehaviour
     private bool goodAngle = false;
     private float goodAngleTimer = 0.5f;
 
-    public Camera camShadowAna;
-    public Camera camPlayer;
-    public GameObject player;
+    [SerializeField] private Camera camShadowAna;
+    [SerializeField] private Camera camPlayer;
+    [SerializeField] private GameObject camPlayerObj;
+    [SerializeField] private GameObject camShadowAnaObj;
+    [SerializeField] private GameObject player;
 
 
     [SerializeField] private Vector2 xRotAngle;
     [SerializeField] private Vector2 yRotAngle;
 
-    public GameObject anamorphisisHouses;
-    public GameObject houses;
+    [SerializeField] private GameObject anamorphisisHouses;
+    [SerializeField] private GameObject houses;
     PlayerStatus playerScript;
 
     // Start is called before the first frame update
@@ -66,8 +68,8 @@ public class CastrumAnamorphosis : MonoBehaviour
         }
 
         
-        Debug.Log(transform.rotation.x);
-        Debug.Log(transform.rotation.y);
+        //Debug.Log(transform.rotation.x);
+        //Debug.Log(transform.rotation.y);
 
         if (Mathf.Abs(transform.rotation.x) < xRotAngle.y && Mathf.Abs(transform.rotation.x) > xRotAngle.x)
         {
@@ -102,16 +104,19 @@ public class CastrumAnamorphosis : MonoBehaviour
             houses.SetActive(true);
             anamorphisisHouses.SetActive(false);
 
-            camShadowAna.enabled = !camShadowAna.enabled;
-            camPlayer.enabled = !camPlayer.enabled;
-            if (player.activeInHierarchy)
-            {
-                player.SetActive(false);
-            }
-            else
-            {
-                player.SetActive(true);
-            }
+            //camShadowAna.enabled = !camShadowAna.enabled;
+            //camPlayer.enabled = !camPlayer.enabled;
+            camShadowAnaObj.SetActive(false);
+            camPlayerObj.SetActive(true);
+
+            //if (player.activeInHierarchy)
+            //{
+            //    player.SetActive(false);
+            //}
+            //else
+            //{
+            //    player.SetActive(true);
+            //}
 
             playerScript.parchRestored1 = true;
         }
