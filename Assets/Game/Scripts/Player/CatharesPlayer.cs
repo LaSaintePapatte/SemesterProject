@@ -12,6 +12,9 @@ public class CatharesPlayer : MonoBehaviour
     [SerializeField] private bool detected = false;
     [SerializeField] private float detectedTimer = 2.5f;
     [SerializeField] private bool hiding = false;
+    [SerializeField] private GameObject lvl1;
+    [SerializeField] private GameObject lvl2;
+    [SerializeField] private GameObject lvl3;
 
     private Vector3 spawnPoint = new Vector3(-9, 1, 0);
 
@@ -63,27 +66,33 @@ public class CatharesPlayer : MonoBehaviour
 
         if (target.tag == "EndLvl1")
         {
+            lvl2.SetActive(true);
             Debug.Log("You've finished Lvl 1");
             spawnPoint = new Vector3(-9, 1, 50);
             transform.position = spawnPoint;
             cam.transform.position = new Vector3(9.75f, 21, 50);
             agent.SetDestination(spawnPoint);
+            lvl1.SetActive(false);
         }
         if (target.tag == "EndLvl2")
         {
+            lvl3.SetActive(true);
             Debug.Log("You've finished Lvl 2");
             spawnPoint = new Vector3(-9, 1, 110);
             cam.transform.position = new Vector3(25, 34, 107.5f);
             transform.position = spawnPoint;
             agent.SetDestination(spawnPoint);
+            lvl2.SetActive(false);
         }
         if (target.tag == "EndLvl3")
         {
+            
             Debug.Log("You've escaped ! You won");
             spawnPoint = new Vector3(-50, 1, 150);
             cam.transform.position = new Vector3(-50, 20, 150);
             transform.position = spawnPoint;
             agent.SetDestination(spawnPoint);
+            lvl3.SetActive(false);
         }
     }
 

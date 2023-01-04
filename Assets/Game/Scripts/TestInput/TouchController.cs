@@ -162,7 +162,7 @@ private void MoveOrbital (Touch touch)
 
         //transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
         rb.AddForce(rb.rotation *  new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * 5);
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 7.5f);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 10f);
     }
 
     private void ZoomCamera(Touch firstTouch, Touch secondTouch)
