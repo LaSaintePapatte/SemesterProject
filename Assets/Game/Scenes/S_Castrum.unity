@@ -2125,6 +2125,7 @@ GameObject:
   - component: {fileID: 207258838}
   - component: {fileID: 207258837}
   - component: {fileID: 207258836}
+  - component: {fileID: 207258841}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: PNJ2
@@ -2240,6 +2241,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207258834}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &207258841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207258834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc4faf68a974c440b407fad3aef54a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: John Cena
+    sentences:
+    - "Nous allons devoir d\xE9placer toute la tr\xE9sorerie du village, il ne manquerait
+      plus que l\u2019inquisition nous d\xE9robe nos richesses."
+    - "Il m\u2019a assur\xE9 que, lui vivant, cela n\u2019arriverait pas. Que Monts\xE9gur
+      ne peut finir ainsi. \r\n"
+    - "Celles-ci ont \xE9t\xE9 d\xE9plac\xE9es il y a quelques jours dans un lieux
+      plus s\xFBr."
+    - "Ils ont perdu quelques pi\xE8ces sur leur passage, cela fera surement quelques
+      heureux. j\u2019en ai d\xE9j\xE0 trouv\xE9 une vers la tour. \r\n"
+  playerStatus: {fileID: 681467776}
 --- !u!1 &211504868
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,8 +3681,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1515187082}
-        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+      - m_Target: {fileID: 888768362}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
         m_MethodName: DisplayNextSentence
         m_Mode: 1
         m_Arguments:
@@ -4735,9 +4760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc4faf68a974c440b407fad3aef54a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 774477506}
-  dialogueText: {fileID: 6988372}
-  animator: {fileID: 1515187081}
   dialogue:
     name: Bonjour
     sentences:
@@ -5974,7 +5996,6 @@ GameObject:
   - component: {fileID: 476607362}
   - component: {fileID: 476607361}
   - component: {fileID: 476607360}
-  - component: {fileID: 476607363}
   m_Layer: 5
   m_Name: DialogueBoxPNJ2
   m_TagString: Untagged
@@ -6063,33 +6084,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476607357}
   m_CullTransparentMesh: 1
---- !u!114 &476607363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476607357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e69d3a83cb90b144ab00f15d4c00ad0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 2039699528}
-  dialogueText: {fileID: 1597536800}
-  animator: {fileID: 476607360}
-  dialogue:
-    name: John Cena
-    sentences:
-    - "Nous allons devoir d\xE9placer toute la tr\xE9sorerie du village, il ne manquerait
-      plus que l\u2019inquisition nous d\xE9robe nos richesses."
-    - "Il m\u2019a assur\xE9 que, lui vivant, cela n\u2019arriverait pas. Que Monts\xE9gur
-      ne peut finir ainsi. \r\n"
-    - "Celles-ci ont \xE9t\xE9 d\xE9plac\xE9es il y a quelques jours dans un lieux
-      plus s\xFBr."
-    - "Ils ont perdu quelques pi\xE8ces sur leur passage, cela fera surement quelques
-      heureux. j\u2019en ai d\xE9j\xE0 trouv\xE9 une vers la tour. \r\n"
-  playerStatus: {fileID: 681467776}
 --- !u!1 &477395224
 GameObject:
   m_ObjectHideFlags: 0
@@ -7062,17 +7056,17 @@ PrefabInstance:
     - target: {fileID: 5679016458926228533, guid: a694a629395f1f64280110ebeeea8e6e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.04
+      value: -2.36
       objectReference: {fileID: 0}
     - target: {fileID: 5679016458926228533, guid: a694a629395f1f64280110ebeeea8e6e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 173.58
+      value: 176.33
       objectReference: {fileID: 0}
     - target: {fileID: 5679016458926228533, guid: a694a629395f1f64280110ebeeea8e6e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -35.62
+      value: 4.74
       objectReference: {fileID: 0}
     - target: {fileID: 5679016458926228533, guid: a694a629395f1f64280110ebeeea8e6e,
         type: 3}
@@ -7889,7 +7883,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 476607363}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DialogueTriggerPNJ2, Assembly-CSharp
         m_MethodName: DisplayNextSentence
         m_Mode: 1
@@ -10763,6 +10757,7 @@ GameObject:
   - component: {fileID: 813788815}
   - component: {fileID: 813788819}
   - component: {fileID: 813788818}
+  - component: {fileID: 813788820}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: PNJ1
@@ -10878,6 +10873,31 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &813788820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813788813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc4faf68a974c440b407fad3aef54a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Jean Mich de la compta
+    sentences:
+    - 'Mon seigneur Raymond de Pereille nous a assure que tout irait bien, l''Eglise
+      catholique souhaite assieger notre maison, notre mont et en veut a notre vie. '
+    - "Il m\u2019a assur\xE9 que, lui vivant, cela n\u2019arriverait pas. Que Monts\xE9gur
+      ne peut finir ainsi. \r\n"
+    - "Mais aujourd\u2019hui, je suis plus inquiet du sort de mon cher Pierre-Roger
+      de Mirepoix, le bon est parti depuis l\u2019aube pour aller chercher du ravitaillement
+      avec sa milice. "
+    - "Il est vrai que depuis que le si\xE8ge \xE0 d\xE9but\xE9 il y a 4 mois d\xE9j\xE0,
+      nous ne nous attendions pas \xE0 ce qu\u2019il puisse durer autant.\n"
+  playerStatus: {fileID: 681467776}
 --- !u!1 &852523539
 GameObject:
   m_ObjectHideFlags: 0
@@ -11090,6 +11110,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886411836}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &888768361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 888768363}
+  - component: {fileID: 888768362}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &888768362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888768361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284cb9727ff656e49a8d9a47582d6a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 774477506}
+  dialogueText: {fileID: 6988372}
+  animator: {fileID: 1515187081}
+--- !u!4 &888768363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888768361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.90157, y: 175.53, z: -37.389664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &891215795
 GameObject:
   m_ObjectHideFlags: 0
@@ -17983,7 +18050,6 @@ GameObject:
   - component: {fileID: 1515187080}
   - component: {fileID: 1515187079}
   - component: {fileID: 1515187081}
-  - component: {fileID: 1515187082}
   m_Layer: 5
   m_Name: DialogueBoxPNJ1
   m_TagString: Untagged
@@ -18072,34 +18138,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1515187082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515187077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc4faf68a974c440b407fad3aef54a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 774477506}
-  dialogueText: {fileID: 6988372}
-  animator: {fileID: 1515187081}
-  dialogue:
-    name: Jean Mich de la compta
-    sentences:
-    - 'Mon seigneur Raymond de Pereille nous a assure que tout irait bien, l''Eglise
-      catholique souhaite assieger notre maison, notre mont et en veut a notre vie. '
-    - "Il m\u2019a assur\xE9 que, lui vivant, cela n\u2019arriverait pas. Que Monts\xE9gur
-      ne peut finir ainsi. \r\n"
-    - "Mais aujourd\u2019hui, je suis plus inquiet du sort de mon cher Pierre-Roger
-      de Mirepoix, le bon est parti depuis l\u2019aube pour aller chercher du ravitaillement
-      avec sa milice. "
-    - "Il est vrai que depuis que le si\xE8ge \xE0 d\xE9but\xE9 il y a 4 mois d\xE9j\xE0,
-      nous ne nous attendions pas \xE0 ce qu\u2019il puisse durer autant.\n"
-  playerStatus: {fileID: 681467776}
 --- !u!1 &1518138915
 GameObject:
   m_ObjectHideFlags: 0

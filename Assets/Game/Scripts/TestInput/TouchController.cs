@@ -56,6 +56,8 @@ public class TouchController : MonoBehaviour
 
             if (Touch.activeTouches.Count > 0)
             {
+                
+
 
                 if (Touch.activeTouches.Count > 0 && Touch.activeTouches[0].phase == TouchPhase.Began)
                 {
@@ -64,6 +66,21 @@ public class TouchController : MonoBehaviour
                 if (Touch.activeTouches[0].startScreenPosition.x < Screen.width / 5)
                 {
                     CharaMove();
+                    RaycastHit hit;
+                    if (Physics.Raycast(transform.position + new Vector3(0,-0.5f,0), transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+                    {
+                        Debug.DrawRay(transform.position + new Vector3(0, -0.5f, 0), transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                        //Debug.Log("Did Hit");
+                        if (hit.distance < 3) 
+                        {
+                            rb.AddForce(0, 5, 0);
+                        }
+                    }
+                    else
+                    {
+                        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+                    //    Debug.Log("Did not Hit");
+                    }
                 }
 
                 else if (Touch.activeTouches[0].startScreenPosition.x > Screen.width / 5)
@@ -162,7 +179,7 @@ private void MoveOrbital (Touch touch)
 
         //transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
         rb.AddForce(rb.rotation *  new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * 5);
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 10f);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 7f);
     }
 
     private void ZoomCamera(Touch firstTouch, Touch secondTouch)

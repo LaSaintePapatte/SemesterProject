@@ -67,24 +67,16 @@ public class InteractScript : MonoBehaviour
                     {
                         playerStatusScript.talkedPNJ1 = true;
                     }
-                    if (!playerStatusScript.talkingPNJ1)
-                    {
-                        playerStatusScript.talkingPNJ1 = true;
-                    }
+
+                    hit.collider.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
 
                 }
                 if (hit.collider.gameObject.CompareTag("PNJ2"))
                 {
-                    if (!playerStatusScript.talkedPNJ2)
+                    if (playerStatusScript.talkedPNJ1 && playerStatusScript.parchRestored1 && playerStatusScript.parchRestored2)
                     {
-                        if (playerStatusScript.talkedPNJ1 && playerStatusScript.parchRestored1 && playerStatusScript.parchRestored2)
-                        {
-                            playerStatusScript.talkedPNJ2 = true;
-                        }
-                        if(!playerStatusScript.talkingPNJ2)
-                    {
-                            playerStatusScript.talkingPNJ2 = true;
-                        }
+                        playerStatusScript.talkedPNJ2 = true;
+                        hit.collider.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
                     }
                 }
                 if (hit.collider.gameObject.CompareTag("Parchment1"))

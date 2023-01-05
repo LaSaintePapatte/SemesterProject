@@ -1,25 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class DialogueManager : MonoBehaviour
 {
 
     private Queue<string> sentences;
 
-    public static DialogueManager instance;
+    //public static DialogueManager instance;
+
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI dialogueText;
+
+    public Animator animator;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         sentences = new Queue<string>();
 
-        instance = this;
+        //instance = this;
     }
 
-    public  void StartDialogue (Dialogue dialogue)
+
+    public void StartDialogue(Dialogue dialogue)
     {
-        Debug.Log("Starting conversation with " + dialogue.name);
+        animator.SetBool("IsOpen", true);
+
+        nameText.text = dialogue.name;
 
         sentences.Clear();
 
@@ -33,18 +47,32 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0) 
+        if (sentences.Count == 0)
         {
             EndDialogue();
             return;
         }
 
         string sentence = sentences.Dequeue();
-        Debug.Log(sentence);
+        //dialogueText.text = sentence;
+
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        dialogueText.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return null;
+        }
     }
 
     void EndDialogue()
     {
-        Debug.Log("End of conversation");
+        animator.SetBool("IsOpen", false);
+
     }
 }
