@@ -22,14 +22,10 @@ public class CameraManagerHouse : MonoBehaviour
     [Range(0.01f, 1.0f)]
     public float smoothFactor = 0.5f;
 
-    //private bool lookAtCoin = false;
+
+    [SerializeField] private float rotationSpeed = 5f;
 
     private bool rotateAroundCoin = true;
-
-    [SerializeField] 
-    public float rRotationSpeed = 5f;
-
-    public float zoomSpeed = 10f;
 
     public float zoomFactor = 1f;
 
@@ -66,7 +62,7 @@ public class CameraManagerHouse : MonoBehaviour
 
             mouseDelta = new Vector3(-1 * Touch.activeTouches[0].delta.normalized.y, Touch.activeTouches[0].delta.normalized.x, 0);
 
-            targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
+            targetRotation += mouseDelta * Time.deltaTime * rotationSpeed * 3;
 
             transform.rotation = Quaternion.Euler(targetRotation);
         }
@@ -77,7 +73,7 @@ public class CameraManagerHouse : MonoBehaviour
 
             mouseDelta = new Vector3(-1 * Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
 
-            targetRotation += mouseDelta * Time.deltaTime * 100;
+            targetRotation += mouseDelta * Time.deltaTime;
 
             transform.rotation = Quaternion.Euler(targetRotation * 3);
 

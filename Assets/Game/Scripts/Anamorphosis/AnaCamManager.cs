@@ -95,7 +95,7 @@ public class AnaCamManager : MonoBehaviour
         transform.position = transform.forward * -cameraOffset * zoomFactor;
 
 
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
 
         
 
@@ -150,7 +150,7 @@ public class AnaCamManager : MonoBehaviour
 
         if (endTimer > 2.5f)
         {
-            SceneManager.LoadScene("S_Exfiltration");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         
     }

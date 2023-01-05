@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class DialogueTrigger : MonoBehaviour
+public class DialogueTriggerPNJ1 : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
@@ -14,12 +14,26 @@ public class DialogueTrigger : MonoBehaviour
 
     private Queue<string> sentences;
 
-    public static DialogueManager instance;
+    [SerializeField] private PlayerStatus playerStatus;
 
     // Start is called before the first frame update
     void Start()
     {
         sentences = new Queue<string>();
+    }
+
+    private void Update()
+    {
+        if (playerStatus.talkingPNJ1 && playerStatus.talkedPNJ1)
+        {
+            TriggerDialogue();
+            playerStatus.talkingPNJ1 = false;
+        }
+        //if (playerStatus.talkingPNJ2 && playerStatus.talkedPNJ2)
+        //{
+        //    TriggerDialogue();
+        //    playerStatus.talkingPNJ2 = false;
+        //}
     }
 
     public void TriggerDialogue ()
@@ -31,7 +45,7 @@ public class DialogueTrigger : MonoBehaviour
         StartDialogue(dialogue);
     }
 
-    private void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
 
@@ -57,6 +71,7 @@ public class DialogueTrigger : MonoBehaviour
 
         string sentence = sentences.Dequeue();
         //dialogueText.text = sentence;
+
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
@@ -74,6 +89,7 @@ public class DialogueTrigger : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        
     }
 }
 

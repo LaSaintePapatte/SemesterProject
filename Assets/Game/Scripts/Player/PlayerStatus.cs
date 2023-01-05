@@ -29,7 +29,12 @@ public class PlayerStatus : MonoBehaviour
     public bool talkedPNJ1= false;
     public bool talkedPNJ2 = false;
     public bool hasCoin = false;
-    public GameObject walls;
+
+    public bool talkingPNJ1 = false;
+    public bool talkingPNJ2 = false;
+
+
+    [SerializeField] private GameObject walls;
     public GameObject minigame;
     
 

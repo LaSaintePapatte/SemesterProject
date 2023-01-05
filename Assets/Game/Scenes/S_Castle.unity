@@ -1786,7 +1786,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &476501764
 MonoBehaviour:
@@ -2074,7 +2074,7 @@ PrefabInstance:
     - target: {fileID: 4722624189489041307, guid: 14c35f8eea398674988a42ff71b16b87,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4722624189489041307, guid: 14c35f8eea398674988a42ff71b16b87,
         type: 3}
@@ -2300,7 +2300,7 @@ PrefabInstance:
     - target: {fileID: 5679016458926228533, guid: a694a629395f1f64280110ebeeea8e6e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5679016458926228533, guid: a694a629395f1f64280110ebeeea8e6e,
         type: 3}
@@ -2508,6 +2508,8 @@ MonoBehaviour:
   talkedPNJ1: 0
   talkedPNJ2: 0
   hasCoin: 0
+  talkingPNJ1: 0
+  talkingPNJ2: 0
   walls: {fileID: 499386109}
   minigame: {fileID: 894746963}
 --- !u!54 &681467766
@@ -2544,7 +2546,6 @@ MonoBehaviour:
   interactScript: {fileID: 681467778}
   isOrbital: 0
   isCharaRota: 1
-  touchVector: {x: 0, y: 0}
   moveSpeed: 5
 --- !u!114 &681467778
 MonoBehaviour:
@@ -2563,7 +2564,7 @@ MonoBehaviour:
   camPlayerObj: {fileID: 0}
   camShadowAnaObj: {fileID: 0}
   anaGame: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 681467760}
   playerStatusScript: {fileID: 681467765}
 --- !u!1 &750363510
 GameObject:
@@ -2928,6 +2929,7 @@ Transform:
   - {fileID: 31963398}
   - {fileID: 355259578}
   - {fileID: 1185831510}
+  - {fileID: 1930649236}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3736,6 +3738,7 @@ GameObject:
   - component: {fileID: 1185831513}
   - component: {fileID: 1185831512}
   - component: {fileID: 1185831515}
+  - component: {fileID: 1185831516}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -3849,7 +3852,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185831509}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 462967134d6be614aa8936beba93e358, type: 3}
   m_Name: 
@@ -3859,14 +3862,33 @@ MonoBehaviour:
   shatteredModel: {fileID: 31963397}
   model: {fileID: 355259577}
   smoothFactor: 0.5
-  rRotationSpeed: 5
-  zoomSpeed: 10
+  rotationSpeed: 5
   zoomFactor: 1
   xPosAngle: {x: -3.413, y: -3.373}
   yPosAngle: {x: -1.123, y: -1.053}
   zPosAngle: {x: 2.714, y: 2.8}
   yRotAngle1: {x: 0.892, y: 0.9}
   yRotAngle2: {x: -0.9, y: -0.892}
+--- !u!114 &1185831516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185831509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100983cfbcfda864bae91d1833bce724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraOffset: 5
+  mainCam: {fileID: 1185831514}
+  modelTransform: {fileID: 31963398}
+  shatteredModel: {fileID: 31963397}
+  model: {fileID: 355259577}
+  xPosAngle: {x: -3.413, y: -3.373}
+  yPosAngle: {x: -1.123, y: -1.053}
+  zPosAngle: {x: 2.714, y: 2.8}
 --- !u!1 &1303729475 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 723758176548979308, guid: fc73292e07133524aaead8bc321d89a8,
@@ -4816,6 +4838,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864747027}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1930649235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1930649236}
+  - component: {fileID: 1930649237}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1930649236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930649235}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1123.8179, y: 771.8847, z: 4.0490026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 894746964}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1930649237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930649235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2479f4c91b986f9489aedd750e901cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinGameScript: {fileID: 1185831516}
 --- !u!1 &1984175674
 GameObject:
   m_ObjectHideFlags: 0

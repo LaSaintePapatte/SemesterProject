@@ -23,7 +23,7 @@ public class TouchController : MonoBehaviour
     [SerializeField] private bool isOrbital = false;
     [SerializeField] private bool isCharaRota = true;
 
-    public Vector2 touchVector;
+    //public Vector2 touchVector;
 
     [SerializeField] private float moveSpeed = 5f;
 

@@ -30,10 +30,10 @@ public class InteractScript : MonoBehaviour
         {
             if (hit.collider != null)
             {
-                if (hit.collider.gameObject.CompareTag("House"))
-                {
-                    SceneManager.LoadScene("S_Castrum");
-                }
+                //if (hit.collider.gameObject.CompareTag("House"))
+                //{
+                //    SceneManager.LoadScene("S_Castrum");
+                //}
 
                 if (hit.collider.gameObject.CompareTag("ShadowAna"))
                 {
@@ -67,6 +67,11 @@ public class InteractScript : MonoBehaviour
                     {
                         playerStatusScript.talkedPNJ1 = true;
                     }
+                    if (!playerStatusScript.talkingPNJ1)
+                    {
+                        playerStatusScript.talkingPNJ1 = true;
+                    }
+
                 }
                 if (hit.collider.gameObject.CompareTag("PNJ2"))
                 {
@@ -76,7 +81,10 @@ public class InteractScript : MonoBehaviour
                         {
                             playerStatusScript.talkedPNJ2 = true;
                         }
-
+                        if(!playerStatusScript.talkingPNJ2)
+                    {
+                            playerStatusScript.talkingPNJ2 = true;
+                        }
                     }
                 }
                 if (hit.collider.gameObject.CompareTag("Parchment1"))
@@ -133,38 +141,32 @@ public class InteractScript : MonoBehaviour
 
                     if (!playerStatusScript.hasCoin)
                     {
+                        Debug.Log("Coin");
                         playerStatusScript.hasCoin = true;
-                        playerStatusScript.minigame.SetActive(true);
                         player.SetActive(false);
+                        playerStatusScript.minigame.SetActive(true);
                         
-                        if (gameObject.activeInHierarchy)
-                        {
-                            gameObject.SetActive(false);
-                        }
-                        else
-                        {
-                            gameObject.SetActive(true);
-                        }
+                        
+                        //if (gameObject.activeInHierarchy)
+                        //{
+                        //    gameObject.SetActive(false);
+                        //}
+                        //else
+                        //{
+                        //    gameObject.SetActive(true);
+                        //}
                     }
                 }
                 if (hit.collider.gameObject.CompareTag("House"))
                 {
                     Debug.Log("HouseCol");
-                    if (true)
-                    {
-                        Debug.Log("CoinMinigame");
-                        playerStatusScript.minigame.SetActive(true);
+                    
+                    Debug.Log("CoinMinigame");
+                    player.SetActive(false);
+                    playerStatusScript.minigame.SetActive(true);
 
-                        camPlayer.enabled = !camPlayer.enabled;
-                        if (gameObject.activeInHierarchy)
-                        {
-                            gameObject.SetActive(false);
-                        }
-                        else
-                        {
-                            gameObject.SetActive(true);
-                        }
-                    }
+                    
+                    
                 }
             }
         }
