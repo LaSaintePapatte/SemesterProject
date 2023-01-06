@@ -47,7 +47,7 @@ public class CastrumAnamorphosis : MonoBehaviour
 
             mouseDelta = new Vector3(-1 * Touch.activeTouches[0].delta.normalized.y, Touch.activeTouches[0].delta.normalized.x, 0);
 
-            targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
+            targetRotation += mouseDelta * Time.deltaTime * 3;
 
             transform.rotation = Quaternion.Euler(targetRotation);
         }

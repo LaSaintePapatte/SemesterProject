@@ -84,20 +84,14 @@ public class AnaCamManager : MonoBehaviour
                 targetRotation += curTouchDelta * Time.deltaTime * 100 / 300;
 
                 transform.rotation = Quaternion.Euler(targetRotation);
-            }
-            
-            //Debug.Log(Touch.activeTouches[0].phase);
-            
+            }    
         }
 
         cameraOffset = Mathf.Clamp(cameraOffset, 1f, 10f);
         zoomFactor -= Input.GetAxis("Mouse ScrollWheel");
         transform.position = transform.forward * -cameraOffset * zoomFactor;
 
-
-        //Debug.Log(transform.position);
-
-        
+        Debug.Log(transform.position);
 
            if (transform.position.x < xPosAngle.y && transform.position.x > xPosAngle.x)
            {
@@ -105,19 +99,8 @@ public class AnaCamManager : MonoBehaviour
                 {
                     if (transform.position.z < zPosAngle.y && transform.position.z > zPosAngle.x)
                     {
-                    //Debug.Log("4");
-                    //if (transform.rotation.y < yRotAngle1.y && transform.rotation.y > yRotAngle1.x)
-                    //{
-                    //    goodAngle = true;
-                    //    Debug.Log("5");
-                    //}
-                    //else if (transform.rotation.y < yRotAngle2.y && transform.rotation.y > yRotAngle2.x)
-                    //{
-                    //    goodAngle = true;
-                    //    Debug.Log("6");
-                    //}
                     goodAngle = true;
-                }
+                    }
                 else
                     {
                         goodAngle = false;
