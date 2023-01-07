@@ -18,6 +18,8 @@ public class InteractScript : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private PlayerStatus playerStatusScript;
     [SerializeField] private GameObject joystick;
+    [SerializeField] private GameObject playerUI;
+    [SerializeField] private GameObject minigameUI;
 
     public void Interact()
     {
@@ -36,22 +38,6 @@ public class InteractScript : MonoBehaviour
                         anaGame.SetActive(true);
                         camShadowAnaObj.SetActive(true);
                         camPlayerObj.SetActive(false);
-
-                        /*camShadowAnaObj.SetActive(true);
-                        camPlayerObj.SetActive(false);
-
-                        if (anaGame.activeInHierarchy)
-                        {
-                            anaGame.SetActive(false);
-                            camShadowAnaObj.SetActive(false);
-                            camPlayerObj.SetActive(true);
-                        }
-                        else
-                        {
-                            anaGame.SetActive(true);
-                            camShadowAnaObj.SetActive(true);
-                            camPlayerObj.SetActive(false);
-                        }*/
                     }
 
                 }
@@ -127,33 +113,20 @@ public class InteractScript : MonoBehaviour
 
                     if (!playerStatusScript.hasCoin)
                     {
-                        Debug.Log("Coin");
                         playerStatusScript.hasCoin = true;
                         player.SetActive(false);
                         playerStatusScript.minigame.SetActive(true);
-                        
-                        
-                        //if (gameObject.activeInHierarchy)
-                        //{
-                        //    gameObject.SetActive(false);
-                        //}
-                        //else
-                        //{
-                        //    gameObject.SetActive(true);
-                        //}
+                        playerUI.SetActive(false);
+                        minigameUI.SetActive(true);
                     }
                 }
                 if (hit.collider.gameObject.CompareTag("House"))
                 {
-                    Debug.Log("HouseCol");
-                    
-                    Debug.Log("CoinMinigame");
                     joystick.SetActive(false);
                     player.SetActive(false);
                     playerStatusScript.minigame.SetActive(true);
-
-                    
-                    
+                    playerUI.SetActive(false);
+                    minigameUI.SetActive(true);
                 }
             }
         }

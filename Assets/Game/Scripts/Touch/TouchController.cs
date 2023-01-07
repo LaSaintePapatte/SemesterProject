@@ -47,7 +47,7 @@ public class TouchController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (isCharaRota)
         {
@@ -159,8 +159,8 @@ private void MoveOrbital (Touch touch)
     private void CharaMove()
     {
         Vector2 moveInputVector = playerControls.Player.Move.ReadValue<Vector2>();
+        Debug.Log(moveInputVector);
 
-        //transform.Translate(new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * Time.deltaTime);
         rb.AddForce(rb.rotation *  new Vector3(moveInputVector.x, 0, moveInputVector.y) * moveSpeed * 5, ForceMode.Force);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, 7f);
     }

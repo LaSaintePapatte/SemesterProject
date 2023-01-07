@@ -8,35 +8,37 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
+using UnityEngine.UI;
 
 public class AnaCamManager : MonoBehaviour
 {
 
+    //[SerializeField] private Image fadeImage;
+    //[SerializeField] private Animator fadeOutAnim;
+
     private PlayerControls playerControls;
     public float cameraOffset = 5f;
 
-    public Camera mainCam;
+    [SerializeField] private Camera mainCam;
 
-    public Transform modelTransform;
+    [SerializeField] private Transform modelTransform;
 
-    public GameObject shatteredModel;
-    public GameObject model;
+    [SerializeField] private GameObject shatteredModel;
+    [SerializeField] private GameObject model;
 
-    private bool goodAngle = false;
-    private float goodAngleTimer = 0.5f;
+    [SerializeField] private bool goodAngle = false;
+    [SerializeField] private float goodAngleTimer = 0.5f;
 
-    private Vector3 targetRotation;
-    private Vector3 mouseDelta;
+    [SerializeField] private Vector3 targetRotation;
+    [SerializeField] private Vector3 mouseDelta;
 
-    private Vector2 startPos;
+    [SerializeField] private Vector2 startPos;
 
-    private float zoomFactor = 1;
+    [SerializeField] private float zoomFactor = 1;
 
     [SerializeField] private Vector2 xPosAngle;
     [SerializeField] private Vector2 yPosAngle;
     [SerializeField] private Vector2 zPosAngle;
-    //[SerializeField] private Vector2 yRotAngle1;
-    //[SerializeField] private Vector2 yRotAngle2;
 
     private bool end = false;
     private float endTimer = 0;
@@ -133,8 +135,16 @@ public class AnaCamManager : MonoBehaviour
 
         if (endTimer > 2.5f)
         {
+            
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        
+            //StartCoroutine(Fading());
+        }  
     }
+
+    //IEnumerator Fading()
+    //{
+    //    fadeOutAnim.SetBool("Fade", true);
+    //    yield return new WaitUntil(() => fadeImage.color.a == 1);
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    //}
 }
