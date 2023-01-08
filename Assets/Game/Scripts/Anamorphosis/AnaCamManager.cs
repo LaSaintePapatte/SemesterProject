@@ -26,15 +26,17 @@ public class AnaCamManager : MonoBehaviour
     [SerializeField] private GameObject shatteredModel;
     [SerializeField] private GameObject model;
 
-    [SerializeField] private bool goodAngle = false;
-    [SerializeField] private float goodAngleTimer = 0.5f;
+    [SerializeField] private LevelManager lvlManager;
 
-    [SerializeField] private Vector3 targetRotation;
-    [SerializeField] private Vector3 mouseDelta;
+    private bool goodAngle = false;
+    private float goodAngleTimer = 0.5f;
 
-    [SerializeField] private Vector2 startPos;
+    private Vector3 targetRotation;
+    private Vector3 mouseDelta;
 
-    [SerializeField] private float zoomFactor = 1;
+    private Vector2 startPos;
+
+    private float zoomFactor = 1;
 
     [SerializeField] private Vector2 xPosAngle;
     [SerializeField] private Vector2 yPosAngle;
@@ -61,10 +63,6 @@ public class AnaCamManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
-        
-
         if (Touch.activeTouches.Count == 1)
         {
             transform.position = modelTransform.position;
@@ -119,7 +117,7 @@ public class AnaCamManager : MonoBehaviour
         
         if (goodAngleTimer <= 0)
         {
-            Debug.Log("YouWon");
+            //Debug.Log("YouWon");
 
             goodAngle = false;
             goodAngleTimer = 0.5f;
@@ -135,16 +133,7 @@ public class AnaCamManager : MonoBehaviour
 
         if (endTimer > 2.5f)
         {
-            
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            //StartCoroutine(Fading());
+            lvlManager.LoadNextLevel();
         }  
     }
-
-    //IEnumerator Fading()
-    //{
-    //    fadeOutAnim.SetBool("Fade", true);
-    //    yield return new WaitUntil(() => fadeImage.color.a == 1);
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    //}
 }

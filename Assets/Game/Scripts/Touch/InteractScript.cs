@@ -12,32 +12,39 @@ public class InteractScript : MonoBehaviour
 {
     [SerializeField] private Camera camPlayer;
     [SerializeField] private Camera camShadowAna;
-    [SerializeField] private GameObject camPlayerObj;
-    [SerializeField] private GameObject camShadowAnaObj;
+
+    [SerializeField] private PlayerStatus playerStatusScript;
+
+    public GameObject camPlayerObj;
+    public GameObject camShadowAnaObj;
     [SerializeField] private GameObject anaGame;
     [SerializeField] private GameObject player;
-    [SerializeField] private PlayerStatus playerStatusScript;
-    [SerializeField] private GameObject joystick;
-    [SerializeField] private GameObject playerUI;
-    [SerializeField] private GameObject minigameUI;
+    public GameObject dialogueUI;
+    public GameObject playerUI;
+    public GameObject minigameUI;
+    public GameObject shadowAnaUI;
+
+    public bool inInteraction = false;
 
     public void Interact()
     {
         Ray ray = camPlayer.ScreenPointToRay(Touch.activeTouches[0].screenPosition);
         RaycastHit hit;
 
-
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider != null)
+            if (hit.collider != null && hit.distance < 3)
             {
                 if (hit.collider.gameObject.CompareTag("ShadowAna"))
                 {
                     if (playerStatusScript.hasParch1 && playerStatusScript.hasCastrum && !playerStatusScript.parchRestored1)
                     {
+                        inInteraction = true;
                         anaGame.SetActive(true);
                         camShadowAnaObj.SetActive(true);
                         camPlayerObj.SetActive(false);
+                        playerUI.SetActive(false);
+                        shadowAnaUI.SetActive(true);
                     }
 
                 }
@@ -49,6 +56,9 @@ public class InteractScript : MonoBehaviour
                     }
 
                     hit.collider.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+                    inInteraction = true;
+                    playerUI.SetActive(false);
+                    dialogueUI.SetActive(true);
 
                 }
                 if (hit.collider.gameObject.CompareTag("PNJ2"))
@@ -57,6 +67,9 @@ public class InteractScript : MonoBehaviour
                     {
                         playerStatusScript.talkedPNJ2 = true;
                         hit.collider.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+                        inInteraction = true;
+                        playerUI.SetActive(false);
+                        dialogueUI.SetActive(true);
                     }
                 }
                 if (hit.collider.gameObject.CompareTag("Parchment1"))
@@ -122,11 +135,12 @@ public class InteractScript : MonoBehaviour
                 }
                 if (hit.collider.gameObject.CompareTag("House"))
                 {
-                    joystick.SetActive(false);
-                    player.SetActive(false);
-                    playerStatusScript.minigame.SetActive(true);
+                    Debug.Log("Babar");
                     playerUI.SetActive(false);
                     minigameUI.SetActive(true);
+                    player.SetActive(false);
+                    playerStatusScript.minigame.SetActive(true);
+                    
                 }
             }
         }

@@ -12,7 +12,7 @@ public class EnnemiAI : MonoBehaviour
 
     int waypointIndex = 0;
 
-    private float stopTimer = 5f;
+    private float stopTimer = 2.5f;
 
     Vector3 target;
 

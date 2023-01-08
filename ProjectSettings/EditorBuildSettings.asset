@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/AnaHouse.unity
     guid: fe357998fe374aa4a81cede2ea28a85d
   - enabled: 1
+    path: Assets/Game/Scenes/S_MainMenu.unity
+    guid: a86c6174528caf049be14941c8739f59
+  - enabled: 1
     path: Assets/Game/Scenes/S_Castle.unity
     guid: a9ac131f400627641bc4dde146b7ff55
   - enabled: 1

@@ -9,6 +9,7 @@ using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 public class CastrumAnamorphosis : MonoBehaviour
 {
 
+    private Vector3 touchDelta;
     private Vector3 mouseDelta;
 
     private Vector3 targetRotation;
@@ -18,6 +19,7 @@ public class CastrumAnamorphosis : MonoBehaviour
 
     [SerializeField] private Camera camShadowAna;
     [SerializeField] private Camera camPlayer;
+
     [SerializeField] private GameObject camPlayerObj;
     [SerializeField] private GameObject camShadowAnaObj;
     [SerializeField] private GameObject player;
@@ -28,14 +30,17 @@ public class CastrumAnamorphosis : MonoBehaviour
 
     [SerializeField] private GameObject anamorphisisHouses;
     [SerializeField] private GameObject houses;
-    PlayerStatus playerScript;
+    [SerializeField] private GameObject shadowAnaUI;
+    [SerializeField] private GameObject playerUI;
 
+    private PlayerStatus playerScript;
+    private InteractScript interactScript;
     // Start is called before the first frame update
     void Start()
     {
         targetRotation = transform.rotation.eulerAngles;
         playerScript = player.GetComponent<PlayerStatus>();
-
+        interactScript = player.GetComponent<InteractScript>();
     }
 
     // Update is called once per frame
@@ -43,33 +48,26 @@ public class CastrumAnamorphosis : MonoBehaviour
     {
         if (Touch.activeTouches.Count >= 1)
         {
-            Debug.Log("Oui");
+            //Debug.Log("Oui");
 
-            mouseDelta = new Vector3(-1 * Touch.activeTouches[0].delta.normalized.y, Touch.activeTouches[0].delta.normalized.x, 0);
+            touchDelta = new Vector3( Touch.activeTouches[0].delta.normalized.y, Touch.activeTouches[0].delta.normalized.x, 0);
 
-            targetRotation += mouseDelta * Time.deltaTime * 3;
+            targetRotation += touchDelta * Time.deltaTime * 100 * 3;
 
             transform.rotation = Quaternion.Euler(targetRotation);
         }
 
         if (Input.GetMouseButton(0))
         {
-
-            mouseDelta = new Vector3(-1 * Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+            mouseDelta = new Vector3( Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
 
             targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
 
             transform.rotation = Quaternion.Euler(targetRotation);
-
-            /*Quaternion camTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
-            Quaternion camTurnAngleZ = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationSpeed, Vector3.up);
-            
-            CameraOffset = camTurnAngle * CameraOffset;*/
         }
 
         
-        //Debug.Log(transform.rotation.x);
-        //Debug.Log(transform.rotation.y);
+        //Debug.Log(transform.rotation);
 
         if (Mathf.Abs(transform.rotation.x) < xRotAngle.y && Mathf.Abs(transform.rotation.x) > xRotAngle.x)
         {
@@ -84,7 +82,7 @@ public class CastrumAnamorphosis : MonoBehaviour
                 goodAngle = false;
                 goodAngleTimer = 0.5f;
             }
-            
+
         }
 
 
@@ -109,14 +107,9 @@ public class CastrumAnamorphosis : MonoBehaviour
             camShadowAnaObj.SetActive(false);
             camPlayerObj.SetActive(true);
 
-            //if (player.activeInHierarchy)
-            //{
-            //    player.SetActive(false);
-            //}
-            //else
-            //{
-            //    player.SetActive(true);
-            //}
+            interactScript.inInteraction = false;
+            shadowAnaUI.SetActive(false);
+            playerUI.SetActive(true);    
 
             playerScript.parchRestored1 = true;
         }

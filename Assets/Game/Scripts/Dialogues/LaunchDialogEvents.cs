@@ -8,11 +8,6 @@ public class LaunchDialogEvents : MonoBehaviour
     List<UnityEvent> Events = new List<UnityEvent>();
 
 
-
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {

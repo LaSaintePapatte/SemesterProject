@@ -51,9 +51,9 @@ public class TouchController : MonoBehaviour
     {
         if (isCharaRota)
         {
-            if (Touch.activeTouches.Count > 0)
+            if (Touch.activeTouches.Count > 0 && !interactScript.inInteraction)
             {
-                if (Touch.activeTouches.Count > 0 && Touch.activeTouches[0].phase == TouchPhase.Began)
+                if (Touch.activeTouches.Count > 0 && Touch.activeTouches[0].phase == TouchPhase.Began && Touch.activeTouches[0].startScreenPosition.x > Screen.width / 5)
                 {
                     interactScript.Interact();
                 }
