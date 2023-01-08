@@ -9,7 +9,7 @@ using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class LevelManager : MonoBehaviour
 {
-    public Animator transition;
+    [SerializeField] private Animator transition;
 
     [SerializeField] private float transitionTime = 2.5f;
 
@@ -25,6 +25,9 @@ public class LevelManager : MonoBehaviour
 
         //Wait
         yield return new WaitForSeconds(transitionTime);
+
+        //Reset time
+        Time.timeScale = 1f;
 
         //Load scene
         SceneManager.LoadScene(levelIndex);

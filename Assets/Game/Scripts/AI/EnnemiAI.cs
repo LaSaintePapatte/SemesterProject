@@ -12,7 +12,7 @@ public class EnnemiAI : MonoBehaviour
 
     int waypointIndex = 0;
 
-    private float stopTimer = 2.5f;
+    [SerializeField] private float stopTimer = 2.5f;
 
     Vector3 target;
 
@@ -34,7 +34,7 @@ public class EnnemiAI : MonoBehaviour
         {
             IterateWaypointIndex();
             UpdateDestination();
-            stopTimer = 5f;
+            stopTimer = 2.5f;
         }
     }
 

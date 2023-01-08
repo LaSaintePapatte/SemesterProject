@@ -10,11 +10,17 @@ public class CatharesPlayer : MonoBehaviour
     public Camera cam;
 
     [SerializeField] private bool detected = false;
-    [SerializeField] private float detectedTimer = 2.5f;
+    [SerializeField] private float detectedTimer = 1.5f;
     [SerializeField] private bool hiding = false;
     [SerializeField] private GameObject lvl1;
     [SerializeField] private GameObject lvl2;
     [SerializeField] private GameObject lvl3;
+
+    [SerializeField] private CanvasGroup lvl1UI;
+    [SerializeField] private CanvasGroup lvl2UI;
+    [SerializeField] private CanvasGroup endScreen;
+
+    private float timer = 0f;
 
     private Vector3 spawnPoint = new Vector3(-9, 1, 0);
 
@@ -27,14 +33,21 @@ public class CatharesPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+
+        timer += Time.deltaTime;
+        if (timer > 15f)
         {
-            Ray movePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(movePosition, out var hitInfo))
+            if (Input.GetMouseButton(0))
             {
-                agent.SetDestination(hitInfo.point);
+                Ray movePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(movePosition, out var hitInfo))
+                {
+                    agent.isStopped = false;
+                    agent.SetDestination(hitInfo.point);
+                }
             }
         }
+        
 
         if (detected)
         {
@@ -44,11 +57,11 @@ public class CatharesPlayer : MonoBehaviour
         {
             Debug.Log("You've been arrested");
             detected = false;
-            detectedTimer = 2.5f;
+            detectedTimer = 1.5f;
             transform.position = spawnPoint;
             agent.SetDestination(transform.position);
         }
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
     }
 
     void OnTriggerEnter(Collider target)
@@ -58,7 +71,7 @@ public class CatharesPlayer : MonoBehaviour
             if (!hiding)
             {
                 detected = true;
-                Debug.Log("BeingDetected");
+                //Debug.Log("BeingDetected");
             }
             
         }
@@ -67,32 +80,48 @@ public class CatharesPlayer : MonoBehaviour
         if (target.tag == "EndLvl1")
         {
             lvl2.SetActive(true);
-            Debug.Log("You've finished Lvl 1");
+            //Debug.Log("You've finished Lvl 1");
             spawnPoint = new Vector3(-9, 1, 50);
             transform.position = spawnPoint;
             cam.transform.position = new Vector3(9.75f, 21, 50);
             agent.SetDestination(spawnPoint);
+            lvl1UI.alpha = 0;
+            lvl1UI.interactable = false;
+            lvl1UI.blocksRaycasts = false;
+            lvl2UI.alpha = 1;
+            lvl2UI.interactable = true;
+            lvl2UI.blocksRaycasts = true;
             lvl1.SetActive(false);
+            
         }
+        
+
         if (target.tag == "EndLvl2")
         {
             lvl3.SetActive(true);
-            Debug.Log("You've finished Lvl 2");
+            //Debug.Log("You've finished Lvl 2");
             spawnPoint = new Vector3(-9, 1, 110);
             cam.transform.position = new Vector3(25, 34, 107.5f);
             transform.position = spawnPoint;
             agent.SetDestination(spawnPoint);
+            lvl2UI.alpha = 0;
+            lvl2UI.interactable = false;
+            lvl2UI.blocksRaycasts = false;
             lvl2.SetActive(false);
         }
         if (target.tag == "EndLvl3")
         {
             
-            Debug.Log("You've escaped ! You won");
+            //Debug.Log("You've escaped ! You won");
             spawnPoint = new Vector3(-50, 1, 150);
             cam.transform.position = new Vector3(-50, 20, 150);
             transform.position = spawnPoint;
             agent.SetDestination(spawnPoint);
             lvl3.SetActive(false);
+            endScreen.alpha = 1;
+            endScreen.interactable = true;
+            endScreen.blocksRaycasts = true;
+            
         }
     }
 
@@ -101,7 +130,7 @@ public class CatharesPlayer : MonoBehaviour
         if (target.tag == "Enemy")
         {
             detected = false;
-            detectedTimer = 2.5f;
+            detectedTimer = 1.5f;
         }
         if (target.tag == "SafeZone")
         {
@@ -115,7 +144,7 @@ public class CatharesPlayer : MonoBehaviour
         {
             hiding = true;
             detected = false;
-            detectedTimer = 2.5f;
+            detectedTimer = 1.5f;
         }
     }
 }

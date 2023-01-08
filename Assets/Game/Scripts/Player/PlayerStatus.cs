@@ -13,7 +13,6 @@ public class PlayerStatus : MonoBehaviour
     private Vector3 targetRotation;
     public Rigidbody rb;
 
-
     //CAMERAS
     [SerializeField] private Camera camPlayer;
     [SerializeField] private Camera camShadowAna;
@@ -29,10 +28,9 @@ public class PlayerStatus : MonoBehaviour
     public bool talkedPNJ1= false;
     public bool talkedPNJ2 = false;
     public bool hasCoin = false;
-
-    public bool talkingPNJ1 = false;
-    public bool talkingPNJ2 = false;
-
+    public bool inHouse = false;
+    public bool nearCoin = false;
+    public bool nearGroup = false;
 
     [SerializeField] private GameObject walls;
     public GameObject minigame;
@@ -65,5 +63,33 @@ public class PlayerStatus : MonoBehaviour
             coinActivate.SetActive(true);
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "House")
+        {
+            inHouse = true;
+        }
+        else
+        {
+            inHouse= false;
+        }
+        if (other.tag == "CoinZone")
+        {
+            nearCoin = true;
+        }
+        else
+        {
+            nearCoin = false;
+        }
+        if (other.tag == "Group")
+        {
+            nearGroup = true;
+        }
+        else
+        {
+            nearGroup = false;
+        }
     }
 }

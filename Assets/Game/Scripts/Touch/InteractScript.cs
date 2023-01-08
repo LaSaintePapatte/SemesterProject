@@ -19,10 +19,10 @@ public class InteractScript : MonoBehaviour
     public GameObject camShadowAnaObj;
     [SerializeField] private GameObject anaGame;
     [SerializeField] private GameObject player;
-    public GameObject dialogueUI;
-    public GameObject playerUI;
-    public GameObject minigameUI;
-    public GameObject shadowAnaUI;
+    [SerializeField] private CanvasGroup dialogueUI;
+    [SerializeField] private CanvasGroup playerUI;
+    [SerializeField] private CanvasGroup minigameUI;
+    [SerializeField] private CanvasGroup shadowAnaUI;
 
     public bool inInteraction = false;
 
@@ -31,8 +31,11 @@ public class InteractScript : MonoBehaviour
         Ray ray = camPlayer.ScreenPointToRay(Touch.activeTouches[0].screenPosition);
         RaycastHit hit;
 
+        
+
         if (Physics.Raycast(ray, out hit))
         {
+            Debug.Log(hit.collider.gameObject.tag);
             if (hit.collider != null && hit.distance < 3)
             {
                 if (hit.collider.gameObject.CompareTag("ShadowAna"))
@@ -43,8 +46,12 @@ public class InteractScript : MonoBehaviour
                         anaGame.SetActive(true);
                         camShadowAnaObj.SetActive(true);
                         camPlayerObj.SetActive(false);
-                        playerUI.SetActive(false);
-                        shadowAnaUI.SetActive(true);
+                        shadowAnaUI.interactable = true;
+                        shadowAnaUI.blocksRaycasts = true;
+                        shadowAnaUI.alpha = 1f;
+                        playerUI.interactable = false;
+                        playerUI.blocksRaycasts = false;
+                        playerUI.alpha = 0f;
                     }
 
                 }
@@ -57,8 +64,12 @@ public class InteractScript : MonoBehaviour
 
                     hit.collider.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
                     inInteraction = true;
-                    playerUI.SetActive(false);
-                    dialogueUI.SetActive(true);
+                    dialogueUI.interactable = true;
+                    dialogueUI.blocksRaycasts= true;
+                    dialogueUI.alpha = 1f;
+                    playerUI.interactable = false;
+                    playerUI.blocksRaycasts = false;
+                    playerUI.alpha = 0f;
 
                 }
                 if (hit.collider.gameObject.CompareTag("PNJ2"))
@@ -67,9 +78,24 @@ public class InteractScript : MonoBehaviour
                     {
                         playerStatusScript.talkedPNJ2 = true;
                         hit.collider.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+                        inInteraction = true; 
+                        dialogueUI.interactable = true;
+                        dialogueUI.blocksRaycasts = true;
+                        dialogueUI.alpha = 1f;
+                        playerUI.interactable = false;
+                        playerUI.blocksRaycasts = false;
+                        playerUI.alpha = 0f;
+                    }
+                    else 
+                    {
+                        hit.collider.gameObject.GetComponent<DialogueTriggerOccupied>().TriggerDialogue();
                         inInteraction = true;
-                        playerUI.SetActive(false);
-                        dialogueUI.SetActive(true);
+                        dialogueUI.interactable = true;
+                        dialogueUI.blocksRaycasts = true;
+                        dialogueUI.alpha = 1f;
+                        playerUI.interactable = false;
+                        playerUI.blocksRaycasts = false;
+                        playerUI.alpha = 0f;
                     }
                 }
                 if (hit.collider.gameObject.CompareTag("Parchment1"))
@@ -126,18 +152,27 @@ public class InteractScript : MonoBehaviour
 
                     if (!playerStatusScript.hasCoin)
                     {
+                        Debug.Log("hfhbzeJF.Kezfb");
                         playerStatusScript.hasCoin = true;
                         player.SetActive(false);
                         playerStatusScript.minigame.SetActive(true);
-                        playerUI.SetActive(false);
-                        minigameUI.SetActive(true);
+                        minigameUI.interactable = true;
+                        minigameUI.blocksRaycasts = true;
+                        minigameUI.alpha = 1f;
+                        playerUI.interactable = false;
+                        playerUI.blocksRaycasts = false;
+                        playerUI.alpha = 0f;
                     }
                 }
                 if (hit.collider.gameObject.CompareTag("House"))
                 {
                     Debug.Log("Babar");
-                    playerUI.SetActive(false);
-                    minigameUI.SetActive(true);
+                    minigameUI.interactable = true;
+                    minigameUI.blocksRaycasts = true;
+                    minigameUI.alpha = 1f;
+                    playerUI.interactable = false; 
+                    playerUI.blocksRaycasts = false;
+                    playerUI.alpha = 0f;
                     player.SetActive(false);
                     playerStatusScript.minigame.SetActive(true);
                     

@@ -19,6 +19,8 @@ TagManager:
   - ParchFrag2
   - Castrum
   - House
+  - CoinZone
+  - Group
   layers:
   - Default
   - TransparentFX

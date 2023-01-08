@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    private InteractScript interactScript;
+    [SerializeField] private InteractScript interactScript;
 
     private Queue<string> sentences;
 
@@ -19,8 +19,9 @@ public class DialogueManager : MonoBehaviour
 
     public Animator animator;
 
-    [SerializeField] private GameObject playerUI;
-    [SerializeField] private GameObject dialogueUI;
+    [SerializeField] private CanvasGroup playerUI;
+    [SerializeField] private CanvasGroup dialogueUI;
+
 
     // Start is called before the first frame update
     void Start()
@@ -74,9 +75,13 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        playerUI.interactable = true;
+        playerUI.blocksRaycasts = true;
+        playerUI.alpha = 1f;
+        dialogueUI.interactable = false;
+        dialogueUI.blocksRaycasts = false;
+        dialogueUI.alpha = 0f;
         interactScript.inInteraction = false;
         animator.SetBool("IsOpen", false);
-        playerUI.SetActive(true);
-        dialogueUI.SetActive(false);
     }
 }

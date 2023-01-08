@@ -30,8 +30,8 @@ public class CastrumAnamorphosis : MonoBehaviour
 
     [SerializeField] private GameObject anamorphisisHouses;
     [SerializeField] private GameObject houses;
-    [SerializeField] private GameObject shadowAnaUI;
-    [SerializeField] private GameObject playerUI;
+    [SerializeField] private CanvasGroup shadowAnaUI;
+    [SerializeField] private CanvasGroup playerUI;
 
     private PlayerStatus playerScript;
     private InteractScript interactScript;
@@ -52,7 +52,7 @@ public class CastrumAnamorphosis : MonoBehaviour
 
             touchDelta = new Vector3( Touch.activeTouches[0].delta.normalized.y, Touch.activeTouches[0].delta.normalized.x, 0);
 
-            targetRotation += touchDelta * Time.deltaTime * 100 * 3;
+            targetRotation += touchDelta * Time.deltaTime * 10 * 3;
 
             transform.rotation = Quaternion.Euler(targetRotation);
         }
@@ -61,18 +61,18 @@ public class CastrumAnamorphosis : MonoBehaviour
         {
             mouseDelta = new Vector3( Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
 
-            targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
+            targetRotation += mouseDelta * Time.deltaTime * 10 * 3;
 
             transform.rotation = Quaternion.Euler(targetRotation);
         }
 
         
-        //Debug.Log(transform.rotation);
+        
 
         if (Mathf.Abs(transform.rotation.x) < xRotAngle.y && Mathf.Abs(transform.rotation.x) > xRotAngle.x)
         {
             Debug.Log("2");
-            if (Mathf.Abs(transform.rotation.y) < yRotAngle.y && Mathf.Abs(transform.rotation.y) > yRotAngle.x)
+            if (transform.rotation.y < yRotAngle.y && transform.rotation.y > yRotAngle.x)
             {
                 Debug.Log("3");
                 goodAngle = true;
@@ -95,23 +95,26 @@ public class CastrumAnamorphosis : MonoBehaviour
 
         if (goodAngleTimer <= 0)
         {
+            Debug.Log(transform.rotation);
             Debug.Log("YouWon");
-
+            playerScript.parchRestored1 = true;
             goodAngle = false;
-            goodAngleTimer = 0.55f;
-            houses.SetActive(true);
-            anamorphisisHouses.SetActive(false);
+            goodAngleTimer = 0.5f;
 
-            //camShadowAna.enabled = !camShadowAna.enabled;
-            //camPlayer.enabled = !camPlayer.enabled;
+            houses.SetActive(true);
+
+            interactScript.inInteraction = false;
+            shadowAnaUI.interactable = false;
+            shadowAnaUI.blocksRaycasts = false;
+            shadowAnaUI.alpha = 0f;
+            playerUI.interactable = true;
+            playerUI.blocksRaycasts = true;
+            playerUI.alpha = 1f;
+
             camShadowAnaObj.SetActive(false);
             camPlayerObj.SetActive(true);
 
-            interactScript.inInteraction = false;
-            shadowAnaUI.SetActive(false);
-            playerUI.SetActive(true);    
-
-            playerScript.parchRestored1 = true;
+            anamorphisisHouses.SetActive(false);
         }
     }
 }

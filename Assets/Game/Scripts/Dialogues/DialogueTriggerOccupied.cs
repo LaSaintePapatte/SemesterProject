@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class DialogueTrigger : MonoBehaviour
+public class DialogueTriggerOccupied : MonoBehaviour
 {
     public Dialogue dialogue;
 
