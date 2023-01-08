@@ -5,7 +5,30 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+  - enabled: 0
+    path: Assets/Game/Scenes/AnaCoin.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  m_configObjects: {}
+  - enabled: 0
+    path: Assets/Game/Scenes/AnaHouse.unity
+    guid: fe357998fe374aa4a81cede2ea28a85d
+  - enabled: 1
+    path: Assets/Game/Scenes/S_MainMenu.unity
+    guid: a86c6174528caf049be14941c8739f59
+  - enabled: 1
+    path: Assets/Game/Scenes/S_Castle.unity
+    guid: a9ac131f400627641bc4dde146b7ff55
+  - enabled: 1
+    path: Assets/Game/Scenes/S_Castrum.unity
+    guid: 16d21ebdda77a9a43b74cc06d1b8ce23
+  - enabled: 1
+    path: Assets/Game/Scenes/S_Exfiltration.unity
+    guid: 06b57fbc0c8aa3542995bf7046d0b3c1
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: af1023f4707579843a0f73c1c627819e,
+      type: 2}
