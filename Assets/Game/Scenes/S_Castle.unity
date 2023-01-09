@@ -2068,6 +2068,28 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4997991831076857275, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+        type: 3}
+      propertyPath: m_text
+      value: "Monts\xE9gur, septembre 2043"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4997991831076857275, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c9fa9eaa39cce484fb35da310ba5e707,
+        type: 2}
+    - target: {fileID: 4997991831076857275, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4997991831076857275, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4992366652120344516, guid: c9fa9eaa39cce484fb35da310ba5e707,
+        type: 2}
     - target: {fileID: 5468607180492540497, guid: 9196d6a3aa946aa45a56635eda62dc7a,
         type: 3}
       propertyPath: m_StaticEditorFlags

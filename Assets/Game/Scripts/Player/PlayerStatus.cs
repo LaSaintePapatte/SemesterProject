@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
-
+    public bool invGiggled = false;
 
     private Vector3 rawInputMovement;
     private Vector3 mouseDelta;

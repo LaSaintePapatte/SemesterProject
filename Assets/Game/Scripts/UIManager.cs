@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Animator transition;
+    [SerializeField] private Animator buttonGiggle;
+
+    
 
     [SerializeField] private InteractScript interactScript;
     [SerializeField] private DialogueManager dialogueManager;
@@ -41,6 +44,13 @@ public class UIManager : MonoBehaviour
                 parch1UI.blocksRaycasts = true;
                 parch1UI.alpha = 1f;
             }
+
+            if (playerStatus.invGiggled)
+            {
+                buttonGiggle.SetBool("Start", true);
+                playerStatus.invGiggled = false;
+            }
+
             if (playerStatus.parchRestored2)
             {
                 parch2UI.interactable = true;

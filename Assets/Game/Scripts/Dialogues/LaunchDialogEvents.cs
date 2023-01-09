@@ -69,6 +69,13 @@ public class LaunchDialogEvents : MonoBehaviour
                 events[1].Invoke();
                 dialog2Done = true;
             }
+            if (playerStatus.parchRestored2 && !dialog3Done)
+            {
+                Debug.Log("3");
+                events[2].Invoke();
+                dialog3Done = true;
+                playerStatus.invGiggled = true;
+            }
             if (playerStatus.hasParch1 && !dialog4Done)
             {
                 Debug.Log("4");

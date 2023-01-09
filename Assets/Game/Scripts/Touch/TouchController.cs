@@ -44,7 +44,7 @@ public class TouchController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isCharaRota)
         {
@@ -57,19 +57,19 @@ public class TouchController : MonoBehaviour
                 if (Touch.activeTouches[0].startScreenPosition.x < Screen.width / 5)
                 {
                     CharaMove();
-                    //RaycastHit hit;
-                    //if (Physics.Raycast(transform.position + new Vector3(0, -0.5f, 0), transform.TransformDirection(Vector3.forward), out hit, 3f))
-                    //{
-                    //    Debug.DrawRay(transform.position + new Vector3(0, -0.5f, 0), transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                    //    if (hit.distance < 3)
-                    //    {
-                    //        rb.AddForce(0, 5, 0);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-                    //}
+                    RaycastHit hit;
+                    if (Physics.Raycast(transform.position + new Vector3(0, -0.5f, 0), transform.TransformDirection(Vector3.forward), out hit, 3f))
+                    {
+                        Debug.DrawRay(transform.position + new Vector3(0, -0.5f, 0), transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                        if (hit.distance < 3)
+                        {
+                            rb.AddForce(0, 5, 0);
+                        }
+                    }
+                    else
+                    {
+                        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+                    }
                 }
 
                 else if (Touch.activeTouches[0].startScreenPosition.x > Screen.width / 5)

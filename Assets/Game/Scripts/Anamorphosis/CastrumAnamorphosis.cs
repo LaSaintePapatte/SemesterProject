@@ -16,8 +16,8 @@ public class CastrumAnamorphosis : MonoBehaviour
     private bool goodAngle = false;
     private float goodAngleTimer = 0.5f;
 
-    public Camera camShadowAna;
-    public Camera camPlayer;
+    public GameObject camShadowAna;
+    public GameObject camPlayer;
     public GameObject player;
 
     [SerializeField] private CanvasGroup playerUI;
@@ -92,7 +92,11 @@ public class CastrumAnamorphosis : MonoBehaviour
 
             goodAngle = false;
             goodAngleTimer = 0.55f;
-            
+
+
+            camShadowAna.SetActive(false);
+            camPlayer.SetActive(true);
+
 
             playerUI.interactable = true;
             playerUI.blocksRaycasts = true;
