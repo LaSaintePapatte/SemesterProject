@@ -60,11 +60,11 @@ public class CSVLoader
             string[] fields = line.Split(fieldSeparator, StringSplitOptions.None);
             for (int j = 0; j < fields.Length; j++)
             {
-                Debug.Log(fields[j]);
+               // Debug.Log(fields[j]);
                 fields[j] = fields[j].TrimStart(' ', surround);
                 fields[j] = fields[j].Replace("\"", "");
                 fields[j] = fields[j].TrimEnd(surround);
-                Debug.Log(fields[j]);
+                //Debug.Log(fields[j]);
 
             }
             dictionary.Add(fields[0], fields[languageIndex + 1]);//adds line to Dictionary

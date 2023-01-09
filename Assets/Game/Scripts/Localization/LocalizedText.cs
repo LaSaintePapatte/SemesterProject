@@ -23,7 +23,7 @@ public class LocalizedText : MonoBehaviour
         else//invalid
         {
             Text.color = Color.red;
-            Debug.LogError("NO VALUE FOR KEY: " + Key);
+            Debug.LogError("NO VALUE FOR KEY: " + Key + " " + gameObject.name);
             //keep the placeholder text in the TMP-UGUI
 
         }

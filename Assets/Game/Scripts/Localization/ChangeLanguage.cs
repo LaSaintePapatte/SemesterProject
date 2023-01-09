@@ -18,22 +18,25 @@ public class ChangeLanguage : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void ButtonLanguage()//On Button Click
+    public void ButtonLanguage(int index)//On Button Click
     {
 
-        if(LocalizationSystem.instance.currentLanguage < LocalizationSystem.instance.languagesHeaders.Length-1)//if next lang available
-        {
+        //if(LocalizationSystem.instance.currentLanguage < LocalizationSystem.instance.languagesHeaders.Length-1)//if next lang available
+        //{
 
-            LocalizationSystem.instance.currentLanguage++;
-            LocalizationSystem.instance.Init();
-        }
-        else//loop
-        {
+        //    LocalizationSystem.instance.currentLanguage++;
+        //    LocalizationSystem.instance.Init();
+        //}
+        //else//loop
+        //{
 
-            LocalizationSystem.instance.currentLanguage = 0;
-            LocalizationSystem.instance.Init();
+        //    LocalizationSystem.instance.currentLanguage = 0;
+        //    LocalizationSystem.instance.Init();
 
-        }
+        //}
+        LocalizationSystem.instance.currentLanguage = index;
+        LocalizationSystem.instance.Init();
+
         StartCoroutine("LoadingNewLanguage");//wait before reloading scene
     }
 

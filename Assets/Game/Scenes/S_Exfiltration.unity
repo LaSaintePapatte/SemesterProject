@@ -937,15 +937,40 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2328860114311837781, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 822562922}
+    - target: {fileID: 2328860114311837781, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenLanguageCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328860114311837781, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328860114311837781, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2328860114590614085, guid: 9196d6a3aa946aa45a56635eda62dc7a,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4395695347783988928, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+        type: 3}
+      propertyPath: Key
+      value: 1244
+      objectReference: {fileID: 0}
     - target: {fileID: 4563021952956206287, guid: 9196d6a3aa946aa45a56635eda62dc7a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4997991831076857275, guid: 9196d6a3aa946aa45a56635eda62dc7a,
         type: 3}
@@ -985,15 +1010,20 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 47.65
       objectReference: {fileID: 0}
+    - target: {fileID: 7914429555765502286, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8391989823891126516, guid: 9196d6a3aa946aa45a56635eda62dc7a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8521332920711355805, guid: 9196d6a3aa946aa45a56635eda62dc7a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8594324022202884162, guid: 9196d6a3aa946aa45a56635eda62dc7a,
         type: 3}
@@ -9782,6 +9812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 53183356}
+  buttonGiggle: {fileID: 0}
   interactScript: {fileID: 822562924}
   dialogueManager: {fileID: 0}
   lvlManager: {fileID: 822562923}
@@ -9795,6 +9826,8 @@ MonoBehaviour:
   parch2UI: {fileID: 0}
   pnj1UI: {fileID: 0}
   pnj2UI: {fileID: 0}
+  menuCanvas: {fileID: 53183354}
+  languageCanvas: {fileID: 899456920}
   agent: {fileID: 252251284}
 --- !u!114 &822562923
 MonoBehaviour:
@@ -9833,6 +9866,9 @@ MonoBehaviour:
   playerUI: {fileID: 0}
   minigameUI: {fileID: 0}
   shadowAnaUI: {fileID: 0}
+  fragments: {fileID: 0}
+  parchFrag1: {fileID: 0}
+  parchFrag2: {fileID: 0}
   inInteraction: 0
 --- !u!4 &822562925
 Transform:
@@ -10544,6 +10580,12 @@ Transform:
   m_Father: {fileID: 257858318}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &899456920 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 2299684758537193431, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 53183352}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &919853108
 PrefabInstance:
   m_ObjectHideFlags: 0

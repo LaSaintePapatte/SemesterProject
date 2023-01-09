@@ -28,6 +28,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup pnj1UI;
     [SerializeField] private CanvasGroup pnj2UI;
 
+    [SerializeField] private CanvasGroup menuCanvas;
+    [SerializeField] private CanvasGroup languageCanvas;
+
     [SerializeField] private NavMeshAgent agent;
 
     private void Update()
@@ -141,6 +144,26 @@ public class UIManager : MonoBehaviour
             agent.isStopped = true;
         }
 
+    }
+
+    public void OpenLanguageCanvas()
+    {
+        languageCanvas.interactable = true;
+        languageCanvas.blocksRaycasts = true;
+        languageCanvas.alpha = 1f;
+        menuCanvas.interactable = false;
+        menuCanvas.blocksRaycasts = false;
+        menuCanvas.alpha = 0f;
+    }
+
+    public void CloseLanguageCanvas()
+    {
+        languageCanvas.interactable = false;
+        languageCanvas.blocksRaycasts = false;
+        languageCanvas.alpha = 0f;
+        menuCanvas.interactable = true;
+        menuCanvas.blocksRaycasts = true;
+        menuCanvas.alpha = 1f;
     }
 
     public void GoMenu()
