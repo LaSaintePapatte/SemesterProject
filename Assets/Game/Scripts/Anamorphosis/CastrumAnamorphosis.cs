@@ -20,6 +20,9 @@ public class CastrumAnamorphosis : MonoBehaviour
     public Camera camPlayer;
     public GameObject player;
 
+    [SerializeField] private CanvasGroup playerUI;
+    [SerializeField] private CanvasGroup minigameUI;
+
 
     [SerializeField] private Vector2 xRotAngle;
     [SerializeField] private Vector2 yRotAngle;
@@ -45,7 +48,7 @@ public class CastrumAnamorphosis : MonoBehaviour
 
             mouseDelta = new Vector3(-1 * Touch.activeTouches[0].delta.normalized.y, Touch.activeTouches[0].delta.normalized.x, 0);
 
-            targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
+            targetRotation += mouseDelta * Time.deltaTime * 10 * 3;
 
             transform.rotation = Quaternion.Euler(targetRotation);
         }
@@ -55,16 +58,10 @@ public class CastrumAnamorphosis : MonoBehaviour
 
             mouseDelta = new Vector3(-1 * Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
 
-            targetRotation += mouseDelta * Time.deltaTime * 100 * 3;
+            targetRotation += mouseDelta * Time.deltaTime * 10 * 3;
 
             transform.rotation = Quaternion.Euler(targetRotation);
-
-            /*Quaternion camTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
-            Quaternion camTurnAngleZ = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * RotationSpeed, Vector3.up);
-            
-            CameraOffset = camTurnAngle * CameraOffset;*/
         }
-
         
         Debug.Log(transform.rotation.x);
         Debug.Log(transform.rotation.y);
@@ -82,11 +79,7 @@ public class CastrumAnamorphosis : MonoBehaviour
                 goodAngle = false;
                 goodAngleTimer = 0.5f;
             }
-            
         }
-
-
-
 
         if (goodAngle)
         {
@@ -99,21 +92,20 @@ public class CastrumAnamorphosis : MonoBehaviour
 
             goodAngle = false;
             goodAngleTimer = 0.55f;
-            houses.SetActive(true);
-            anamorphisisHouses.SetActive(false);
+            
 
-            camShadowAna.enabled = !camShadowAna.enabled;
-            camPlayer.enabled = !camPlayer.enabled;
-            if (player.activeInHierarchy)
-            {
-                player.SetActive(false);
-            }
-            else
-            {
-                player.SetActive(true);
-            }
+            playerUI.interactable = true;
+            playerUI.blocksRaycasts = true;
+            playerUI.alpha = 1f;
+            minigameUI.interactable = false;
+            minigameUI.blocksRaycasts = false;
+            minigameUI.alpha = 0f;
+            FindObjectOfType<InteractScript>().inInteraction = false;
 
             playerScript.parchRestored1 = true;
+
+            houses.SetActive(true);
+            anamorphisisHouses.SetActive(false);
         }
     }
 }
