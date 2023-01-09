@@ -31,6 +31,7 @@ public class PlayerStatus : MonoBehaviour
     public bool inHouse = false;
     public bool nearCoin = false;
     public bool nearGroup = false;
+    public bool inShadowAna = false;
 
     [SerializeField] private GameObject walls;
     public GameObject minigame;

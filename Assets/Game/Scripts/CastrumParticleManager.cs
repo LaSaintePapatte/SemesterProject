@@ -24,7 +24,7 @@ public class CastrumParticleManager : MonoBehaviour
         {
             particleCastrum.SetActive(false);
         }
-        if (playerStatus.hasParch2)
+        if (playerStatus.hasParch2 && !playerStatus.parchRestored2)
         {
             particleParch2.SetActive(false);
             particleFrag1.SetActive(true);
@@ -62,9 +62,10 @@ public class CastrumParticleManager : MonoBehaviour
         {
             particleShadowAna.SetActive(true);
         }
-        if (playerStatus.parchRestored1)
+        if (playerStatus.inShadowAna)
         {
             particleShadowAna.SetActive(false);
         }
+        
     }
 }

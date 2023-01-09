@@ -155,7 +155,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1522078453}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: Quitter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c9fa9eaa39cce484fb35da310ba5e707, type: 2}
   m_sharedMaterial: {fileID: -4992366652120344516, guid: c9fa9eaa39cce484fb35da310ba5e707,
@@ -502,7 +502,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1522078453}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -898,7 +898,7 @@ RectTransform:
   m_Children:
   - {fileID: 1134259215}
   m_Father: {fileID: 1522078453}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1226,7 +1226,7 @@ RectTransform:
   m_Children:
   - {fileID: 818441933}
   m_Father: {fileID: 1522078453}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1346,7 +1346,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1522078453}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Language
+  m_text: Langage
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c9fa9eaa39cce484fb35da310ba5e707, type: 2}
   m_sharedMaterial: {fileID: -4992366652120344516, guid: c9fa9eaa39cce484fb35da310ba5e707,
@@ -1789,7 +1789,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play
+  m_text: Jouer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c9fa9eaa39cce484fb35da310ba5e707, type: 2}
   m_sharedMaterial: {fileID: -4992366652120344516, guid: c9fa9eaa39cce484fb35da310ba5e707,
@@ -2334,13 +2334,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1621508356}
+  - {fileID: 759250981}
   - {fileID: 601053771}
   - {fileID: 666701256}
   - {fileID: 1814315626}
   - {fileID: 234896192}
   - {fileID: 404902298}
   - {fileID: 1540871920}
-  - {fileID: 759250981}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2418,7 +2418,7 @@ PrefabInstance:
     - target: {fileID: 5614990655037785887, guid: d4604a04633cd2f4687752b710e8d2b9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5614990655037785887, guid: d4604a04633cd2f4687752b710e8d2b9,
         type: 3}
@@ -2634,7 +2634,7 @@ RectTransform:
   m_Children:
   - {fileID: 389399850}
   m_Father: {fileID: 1522078453}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

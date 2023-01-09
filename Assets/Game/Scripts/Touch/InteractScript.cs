@@ -24,6 +24,8 @@ public class InteractScript : MonoBehaviour
     [SerializeField] private CanvasGroup minigameUI;
     [SerializeField] private CanvasGroup shadowAnaUI;
     [SerializeField] private GameObject fragments;
+    [SerializeField] private GameObject parchFrag1;
+    [SerializeField] private GameObject parchFrag2;
 
     public bool inInteraction = false;
 
@@ -43,6 +45,7 @@ public class InteractScript : MonoBehaviour
                 {
                     if (playerStatusScript.hasParch1 && playerStatusScript.hasCastrum && !playerStatusScript.parchRestored1)
                     {
+                        playerStatusScript.inShadowAna = true;
                         inInteraction = true;
                         anaGame.SetActive(true);
                         camShadowAnaObj.SetActive(true);
@@ -124,7 +127,6 @@ public class InteractScript : MonoBehaviour
                     if (!playerStatusScript.hasParchFrag1)
                     {
                         playerStatusScript.hasParchFrag1 = true;
-                        GameObject parchFrag1 = GameObject.Find("ParchFrag1");
                         parchFrag1.SetActive(false);
 
                     }
@@ -134,7 +136,6 @@ public class InteractScript : MonoBehaviour
                     if (!playerStatusScript.hasParchFrag2)
                     {
                         playerStatusScript.hasParchFrag2 = true;
-                        GameObject parchFrag2 = GameObject.Find("ParchFrag2");
                         parchFrag2.SetActive(false);
 
                     }
