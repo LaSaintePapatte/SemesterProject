@@ -23,6 +23,7 @@ public class InteractScript : MonoBehaviour
     [SerializeField] private CanvasGroup playerUI;
     [SerializeField] private CanvasGroup minigameUI;
     [SerializeField] private CanvasGroup shadowAnaUI;
+    [SerializeField] private GameObject fragments;
 
     public bool inInteraction = false;
 
@@ -114,6 +115,7 @@ public class InteractScript : MonoBehaviour
                         playerStatusScript.hasParch2 = true;
                         GameObject parch2 = GameObject.Find("Parchment2");
                         parch2.SetActive(false);
+                        fragments.SetActive(true);
 
                     }
                 }
@@ -164,7 +166,7 @@ public class InteractScript : MonoBehaviour
                         playerUI.alpha = 0f;
                     }
                 }
-                if (hit.collider.gameObject.CompareTag("House"))
+                if (hit.collider.gameObject.CompareTag("HouseMinigame"))
                 {
                     Debug.Log("Babar");
                     minigameUI.interactable = true;

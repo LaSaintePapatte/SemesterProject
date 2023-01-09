@@ -21,6 +21,7 @@ TagManager:
   - House
   - CoinZone
   - Group
+  - HouseMinigame
   layers:
   - Default
   - TransparentFX
