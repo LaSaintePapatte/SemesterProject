@@ -50,31 +50,24 @@ public class PinchDetection : MonoBehaviour
         while (true)
         {
             distance = Vector2.Distance(controls.TouchMinigame.PrimaryFingerPos.ReadValue<Vector2>(), controls.TouchMinigame.SecondaryFingerPos.ReadValue<Vector2>());
-            
+
             //DETECTION
             //Zoom out
             if (distance > previousDistance)
             {
-                //Vector3 targetPosition = cameraTransform.position;
-                //targetPosition = targetPosition - cameraTransform.forward;
-                //cameraTransform.position = Vector3.Slerp(cameraTransform.position, targetPosition, Time.deltaTime * zoomSpeed);
-
-                //float targetFOV = cam.fieldOfView;
-                //targetFOV -= 1f;
-                //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, targetFOV, Time.deltaTime * zoomSpeed);
 
                 coinGameScript.cameraOffset -= .1f;
 
-                
+
             }
             //Zoom in
             if (distance < previousDistance)
             {
-                
+
 
                 coinGameScript.cameraOffset += .1f;
-                
-                
+
+
             }
 
             //Better accuracy : 
@@ -90,6 +83,6 @@ public class PinchDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

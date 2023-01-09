@@ -126,7 +126,10 @@ public class UIManager : MonoBehaviour
         pauseUI.blocksRaycasts = false;
         pauseUI.alpha = 0f;
         Time.timeScale = 1f;
-        agent.isStopped = true;
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            agent.isStopped = true;
+        }
 
     }
 

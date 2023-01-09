@@ -27,7 +27,7 @@ public class CatharesPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class CatharesPlayer : MonoBehaviour
                 }
             }
         }
-        
+
 
         if (detected)
         {
@@ -73,7 +73,7 @@ public class CatharesPlayer : MonoBehaviour
                 detected = true;
                 //Debug.Log("BeingDetected");
             }
-            
+
         }
 
 
@@ -92,9 +92,9 @@ public class CatharesPlayer : MonoBehaviour
             lvl2UI.interactable = true;
             lvl2UI.blocksRaycasts = true;
             lvl1.SetActive(false);
-            
+
         }
-        
+
 
         if (target.tag == "EndLvl2")
         {
@@ -111,7 +111,7 @@ public class CatharesPlayer : MonoBehaviour
         }
         if (target.tag == "EndLvl3")
         {
-            
+
             //Debug.Log("You've escaped ! You won");
             spawnPoint = new Vector3(-50, 1, 150);
             cam.transform.position = new Vector3(-50, 20, 150);
@@ -121,7 +121,7 @@ public class CatharesPlayer : MonoBehaviour
             endScreen.alpha = 1;
             endScreen.interactable = true;
             endScreen.blocksRaycasts = true;
-            
+
         }
     }
 
