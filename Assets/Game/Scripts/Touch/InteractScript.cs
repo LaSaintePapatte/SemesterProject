@@ -35,7 +35,7 @@ public class InteractScript : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log(hit.collider.gameObject.tag);
+            //Debug.Log(hit.collider.gameObject.tag);
             if (hit.collider != null && hit.distance < 3)
             {
                 if (hit.collider.gameObject.CompareTag("ShadowAna"))

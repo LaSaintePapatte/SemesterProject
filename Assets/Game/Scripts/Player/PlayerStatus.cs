@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
-
+    public bool invGiggled = false;
 
     private Vector3 rawInputMovement;
     private Vector3 mouseDelta;
@@ -25,7 +25,7 @@ public class PlayerStatus : MonoBehaviour
     public bool hasParchFrag2 = false;
     public bool parchRestored1 = false;
     public bool parchRestored2 = false;
-    public bool talkedPNJ1= false;
+    public bool talkedPNJ1 = false;
     public bool talkedPNJ2 = false;
     public bool hasCoin = false;
     public bool inHouse = false;
@@ -34,7 +34,7 @@ public class PlayerStatus : MonoBehaviour
 
     [SerializeField] private GameObject walls;
     public GameObject minigame;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,23 +46,23 @@ public class PlayerStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        if (hasParchFrag1 && hasParchFrag2 && hasParch2)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            parchRestored2 = true;
-            hasParchFrag1 = false;
-            hasParchFrag2 = false;
-        }
+            if (hasParchFrag1 && hasParchFrag2 && hasParch2)
+            {
+                parchRestored2 = true;
+                hasParchFrag1 = false;
+                hasParchFrag2 = false;
+            }
 
-        if (parchRestored1 && parchRestored2 && talkedPNJ1 && talkedPNJ2)
-        {
-            
-            walls.SetActive(false);
-            GameObject coinActivate = GameObject.Find("CoinActivate");
-            coinActivate.SetActive(true);
-        }
+            if (parchRestored1 && parchRestored2 && talkedPNJ1 && talkedPNJ2)
+            {
 
+                walls.SetActive(false);
+                GameObject coinActivate = GameObject.Find("CoinActivate");
+                coinActivate.SetActive(true);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,7 +73,7 @@ public class PlayerStatus : MonoBehaviour
         }
         else
         {
-            inHouse= false;
+            inHouse = false;
         }
         if (other.tag == "CoinZone")
         {

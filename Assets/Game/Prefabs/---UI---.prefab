@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: -0.000061035156}
+  m_AnchoredPosition: {x: -0.00024414062, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &2170565505190815346
@@ -1593,12 +1593,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 60
   m_fontSizeBase: 30
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1670,7 +1670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50.000122, y: 49.999985}
+  m_AnchoredPosition: {x: -50.000244, y: 50}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &2328860112947677086
@@ -1701,7 +1701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap Text to close
+  m_text: Appuyez sur le texte pour quitter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8807660913cade047bfb712e68ea60bf, type: 2}
   m_sharedMaterial: {fileID: 4195279479809215430, guid: 8807660913cade047bfb712e68ea60bf,
@@ -1837,12 +1837,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Slide to move camera angle
-
-    Pinch to zoom
-
-    Find the good camera
-    angle to complete the puzzle'
+  m_text: "Glisser pour modifier l'angle de cam\xE9ra\nPincer pour zoomer\nTrouver
+    le bon angle de cam\xE9ra pour compl\xE9ter le puzzle"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8807660913cade047bfb712e68ea60bf, type: 2}
   m_sharedMaterial: {fileID: 4195279479809215430, guid: 8807660913cade047bfb712e68ea60bf,
@@ -2681,8 +2677,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 150}
-  m_SizeDelta: {x: 450, y: 50}
+  m_AnchoredPosition: {x: 0, y: 240.42726}
+  m_SizeDelta: {x: 721.2817, y: 80.1424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2328860113142318803
 CanvasRenderer:
@@ -4101,8 +4097,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150}
-  m_SizeDelta: {x: 450, y: 50}
+  m_AnchoredPosition: {x: 0, y: -240.42726}
+  m_SizeDelta: {x: 721.2817, y: 80.1424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2328860113416822834
 CanvasRenderer:
@@ -4384,7 +4380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50.000122, y: 49.999985}
+  m_AnchoredPosition: {x: -50.000244, y: 50}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &2328860113505991777
@@ -4415,7 +4411,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap Text to close
+  m_text: Appuyez sur le texte pour quitter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8807660913cade047bfb712e68ea60bf, type: 2}
   m_sharedMaterial: {fileID: 4195279479809215430, guid: 8807660913cade047bfb712e68ea60bf,
@@ -4611,12 +4607,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 60
   m_fontSizeBase: 30
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -6203,7 +6199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &2328860113887748896
@@ -6724,7 +6720,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap Text to close
+  m_text: Appuyez sur le texte pour quitter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8807660913cade047bfb712e68ea60bf, type: 2}
   m_sharedMaterial: {fileID: 4195279479809215430, guid: 8807660913cade047bfb712e68ea60bf,
@@ -7105,7 +7101,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50.000122, y: 49.999985}
+  m_AnchoredPosition: {x: -50.000244, y: 50}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &2328860114226633195
@@ -7136,7 +7132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap Text to close
+  m_text: Appuyez sur le texte pour quitter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8807660913cade047bfb712e68ea60bf, type: 2}
   m_sharedMaterial: {fileID: 4195279479809215430, guid: 8807660913cade047bfb712e68ea60bf,
@@ -7596,7 +7592,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 50}
+  m_SizeDelta: {x: 721.2817, y: 80.1424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2328860114311837787
 CanvasRenderer:
@@ -7998,12 +7994,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 60
   m_fontSizeBase: 30
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -10213,7 +10209,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: -0.000061035156}
+  m_AnchoredPosition: {x: -0.00024414062, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1321927163322962323
@@ -10265,7 +10261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: -0.000061035156}
+  m_AnchoredPosition: {x: -0.00024414062, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &5132445181180032691
