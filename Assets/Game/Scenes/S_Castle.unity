@@ -2243,6 +2243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5bac2428cf8bc44909587b9f3e146d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invGiggled: 0
   rb: {fileID: 681467766}
   camPlayer: {fileID: 554661637}
   camShadowAna: {fileID: 0}
@@ -4262,6 +4263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 668143465}
+  buttonGiggle: {fileID: 0}
   interactScript: {fileID: 681467778}
   dialogueManager: {fileID: 0}
   lvlManager: {fileID: 455697996}
@@ -5424,7 +5426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2108165493
 Transform:
   m_ObjectHideFlags: 0

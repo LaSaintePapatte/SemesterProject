@@ -81,7 +81,7 @@ public class AnaCamManager : MonoBehaviour
                 Vector3 curTouchDelta = new Vector3(-1 * (Touch.activeTouches[0].screenPosition.y - startPos.y), Touch.activeTouches[0].screenPosition.x - startPos.x, 0);
                 
 
-                targetRotation += curTouchDelta * Time.deltaTime / 3;
+                targetRotation += curTouchDelta * Time.deltaTime * 3;
 
                 transform.rotation = Quaternion.Euler(targetRotation);
             }    
