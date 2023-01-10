@@ -5475,8 +5475,7 @@ MonoBehaviour:
   dialogue:
     name: RuinHint
     sentences:
-    - "Il devrait y avoir des ruines quelque part, elles pourraient m\u2019apprendre
-      quelque chose."
+    - sub_2_0
   playerStatus: {fileID: 0}
 --- !u!114 &1188102680
 MonoBehaviour:
@@ -7149,7 +7148,7 @@ MonoBehaviour:
   dialogue:
     name: InteractHint
     sentences:
-    - "Arch\xE9ologue : Voyons voir ce que cette montre peut faire.\n"
+    - sub_3_0
   playerStatus: {fileID: 0}
 --- !u!114 &1718097030
 MonoBehaviour:

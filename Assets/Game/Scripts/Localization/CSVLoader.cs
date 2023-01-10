@@ -71,7 +71,7 @@ public class CSVLoader
             successfulImports++;
 
         }
-        Debug.Log("LOADED successfully " + successfulImports + " fields for localization: " + LocalizationSystem.instance.languagesHeaders[languageIndex]);
+        //Debug.Log("LOADED successfully " + successfulImports + " fields for localization: " + LocalizationSystem.instance.languagesHeaders[languageIndex]);
 
         return dictionary;
     }

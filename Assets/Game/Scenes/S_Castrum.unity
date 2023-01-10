@@ -1154,7 +1154,7 @@ PrefabInstance:
     - target: {fileID: 2328860113660408032, guid: 9196d6a3aa946aa45a56635eda62dc7a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 125
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2328860113660408039, guid: 9196d6a3aa946aa45a56635eda62dc7a,
         type: 3}
@@ -1290,6 +1290,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788562484404866652, guid: 9196d6a3aa946aa45a56635eda62dc7a,
+        type: 3}
+      propertyPath: Key
+      value: continuer
       objectReference: {fileID: 0}
     - target: {fileID: 5511244620995837086, guid: 9196d6a3aa946aa45a56635eda62dc7a,
         type: 3}
@@ -1540,6 +1545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 120744798}
   - component: {fileID: 120744799}
+  - component: {fileID: 120744800}
   m_Layer: 0
   m_Name: 8
   m_TagString: Untagged
@@ -1577,8 +1583,20 @@ MonoBehaviour:
   dialogue:
     name: Joke
     sentences:
-    - "Coll\xE8gue : On devrait te donner une augmentation pour \xE7a !"
+    - sub_8_0
   playerStatus: {fileID: 1345415856}
+--- !u!114 &120744800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120744797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7ee6724d3f884dbd9f5b754a7beda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &129828419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2028,6 +2046,7 @@ GameObject:
   m_Component:
   - component: {fileID: 223934596}
   - component: {fileID: 223934597}
+  - component: {fileID: 223934598}
   m_Layer: 0
   m_Name: 4
   m_TagString: Untagged
@@ -2065,15 +2084,24 @@ MonoBehaviour:
   dialogue:
     name: ArrivingCastrum
     sentences:
-    - "Arch\xE9ologue : Mais ?"
-    - "Arch\xE9ologue : Tu as peut-\xEAtre oubli\xE9 de me parler de quelque chose
-      ? "
-    - "Coll\xE8gue : Ah oui j\u2019ai omis de te parler de \xE7a. Que dit ta montre
-      ?"
-    - "Arch\xE9ologue : Elle indique 1243."
-    - "Coll\xE8gue  : Et bien voil\xE0, tu vas pouvoir en apprendre beaucoup plus
-      sur ce lieu maintenant que tu es revenu 800 ans dans le pass\xE9.\r"
+    - sub_4_0
+    - sub_4_1
+    - sub_4_2
+    - sub_4_3
+    - sub_4_4
   playerStatus: {fileID: 1345415856}
+--- !u!114 &223934598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223934595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7ee6724d3f884dbd9f5b754a7beda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &236962852
 GameObject:
   m_ObjectHideFlags: 0
@@ -3587,6 +3615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 421789818}
   - component: {fileID: 421789819}
+  - component: {fileID: 421789820}
   m_Layer: 0
   m_Name: 5
   m_TagString: Untagged
@@ -3624,8 +3653,20 @@ MonoBehaviour:
   dialogue:
     name: MissingParts
     sentences:
-    - "Arch\xE9ologue : Il y a surement moyen de trouver les parties manquantes.\r"
+    - sub_5_0
   playerStatus: {fileID: 1345415856}
+--- !u!114 &421789820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421789817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7ee6724d3f884dbd9f5b754a7beda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &424323281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 98813ffa7f88f1344b1913e06fbc64a3,
@@ -4380,6 +4421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 625646073}
   - component: {fileID: 625646074}
+  - component: {fileID: 625646075}
   m_Layer: 0
   m_Name: 9
   m_TagString: Untagged
@@ -4417,9 +4459,20 @@ MonoBehaviour:
   dialogue:
     name: Sad
     sentences:
-    - "Coll\xE8gue : On dirait qu\u2019on arrive dans un contexte particulier, il
-      avait  l\u2019air vraiment pr\xE9occup\xE9."
+    - sub_9_0
   playerStatus: {fileID: 1345415856}
+--- !u!114 &625646075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625646072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7ee6724d3f884dbd9f5b754a7beda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &629860036
 GameObject:
   m_ObjectHideFlags: 0
@@ -5036,6 +5089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 750040737}
   - component: {fileID: 750040738}
+  - component: {fileID: 750040739}
   m_Layer: 0
   m_Name: 7
   m_TagString: Untagged
@@ -5073,8 +5127,20 @@ MonoBehaviour:
   dialogue:
     name: Talk
     sentences:
-    - "Arch\xE9ologue : Un document, il manque des parties..."
+    - sub_7_0
   playerStatus: {fileID: 1345415856}
+--- !u!114 &750040739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750040736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7ee6724d3f884dbd9f5b754a7beda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &764179693 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7104850204587065140, guid: 29e536e875e627f4688d8c671caf9dcd,
@@ -5967,9 +6033,11 @@ GameObject:
   - component: {fileID: 856885051}
   - component: {fileID: 856885050}
   - component: {fileID: 856885048}
-  - component: {fileID: 856885047}
-  - component: {fileID: 856885046}
   - component: {fileID: 856885053}
+  - component: {fileID: 856885056}
+  - component: {fileID: 856885055}
+  - component: {fileID: 856885054}
+  - component: {fileID: 856885057}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: PNJ2
@@ -5992,47 +6060,6 @@ Transform:
   m_Father: {fileID: 315303587}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &856885046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856885044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25305a7d65d858445a31607f983d3f9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: "B\xE9atris la villageoise"
-    sentences:
-    - "J'ai quelque chose pour vous, mais revenez me voir plus tard je suis occup\xE9."
-  playerStatus: {fileID: 1345415856}
---- !u!114 &856885047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856885044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc4faf68a974c440b407fad3aef54a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: "B\xE9atris la villageoise"
-    sentences:
-    - "Nous allons devoir d\xE9placer toute la tr\xE9sorerie du village, il ne manquerait
-      plus que l\u2019inquisition nous d\xE9robe nos richesses."
-    - "Il m\u2019a assur\xE9 que, lui vivant, cela n\u2019arriverait pas. Que Monts\xE9gur
-      ne peut finir ainsi. \r\n"
-    - "Celles-ci ont \xE9t\xE9 d\xE9plac\xE9es il y a quelques jours dans un lieux
-      plus s\xFBr."
-    - "Ils ont perdu quelques pi\xE8ces sur leur passage, cela fera surement quelques
-      heureux. j\u2019en ai d\xE9j\xE0 trouv\xE9 une vers la tour. \r\n"
-  playerStatus: {fileID: 1345415856}
 --- !u!54 &856885048
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6127,6 +6154,66 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &856885054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856885044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25305a7d65d858445a31607f983d3f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: "B\xE9atris la villageoise"
+    sentences:
+    - dialog_2_3
+  playerStatus: {fileID: 1345415856}
+--- !u!114 &856885055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856885044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7ee6724d3f884dbd9f5b754a7beda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &856885056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856885044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc4faf68a974c440b407fad3aef54a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: "B\xE9atris la villageoise"
+    sentences:
+    - dialog_2_0
+    - dialog_2_1
+    - dialog_2_2
+  playerStatus: {fileID: 1345415856}
+--- !u!114 &856885057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856885044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06731da9290202c4bbb8da98cb0cebc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &859592805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6977,6 +7064,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013305858}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1042384022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1042384024}
+  - component: {fileID: 1042384023}
+  m_Layer: 0
+  m_Name: LocalizationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1042384023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042384022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1446cdf242e1848a523219aa3b9d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLanguage: 0
+  currentLanguageCode: 
+  languagesHeaders: []
+  isReady: 0
+--- !u!4 &1042384024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042384022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1227.4994, y: 538.1507, z: 180.01788}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043242080
 GameObject:
   m_ObjectHideFlags: 0
@@ -7950,6 +8085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1261564455}
   - component: {fileID: 1261564456}
+  - component: {fileID: 1261564457}
   m_Layer: 0
   m_Name: 10
   m_TagString: Untagged
@@ -7987,8 +8123,20 @@ MonoBehaviour:
   dialogue:
     name: Curious
     sentences:
-    - "Arch\xE9ologue : Je pourrais peut-\xEAtre essayer d\u2019en trouver une."
+    - sub_10_0
   playerStatus: {fileID: 1345415856}
+--- !u!114 &1261564457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261564454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7ee6724d3f884dbd9f5b754a7beda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1264688174
 GameObject:
   m_ObjectHideFlags: 0
@@ -9302,6 +9450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1356613129}
   - component: {fileID: 1356613130}
+  - component: {fileID: 1356613131}
   m_Layer: 0
   m_Name: 11
   m_TagString: Untagged
@@ -9339,9 +9488,20 @@ MonoBehaviour:
   dialogue:
     name: Curious
     sentences:
-    - "Arch\xE9ologue : Le castrum continue par l\xE0 bas mais ce regroupement m'emp\xEAche
-      de passer pour l'instant."
+    - sub_11_0
   playerStatus: {fileID: 1345415856}
+--- !u!114 &1356613131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356613128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7ee6724d3f884dbd9f5b754a7beda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1363691396
 GameObject:
   m_ObjectHideFlags: 0
@@ -9806,7 +9966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 109994491}
-  buttonGiggle: {fileID: 0}
+  buttonGiggle: {fileID: 464949108}
   interactScript: {fileID: 1345415857}
   dialogueManager: {fileID: 521128308}
   lvlManager: {fileID: 1793114424}
@@ -13050,6 +13210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1750127059}
   - component: {fileID: 1750127060}
+  - component: {fileID: 1750127061}
   m_Layer: 0
   m_Name: 6
   m_TagString: Untagged
@@ -13087,10 +13248,22 @@ MonoBehaviour:
   dialogue:
     name: CasualTalk
     sentences:
-    - "Arch\xE9ologue : Super ! je vais pouvoir en savoir plus !\n"
-    - "Coll\xE8gue:  Regarde si tu ne peux pas trouver d\u2019autres infos. "
-    - "\rEt pense \xE0 regarder ton inventaire."
+    - sub_6_0
+    - sub_6_1
+    - sub_6_2
   playerStatus: {fileID: 1345415856}
+--- !u!114 &1750127061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750127058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7ee6724d3f884dbd9f5b754a7beda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1767541339 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 98813ffa7f88f1344b1913e06fbc64a3,
@@ -15168,6 +15341,7 @@ GameObject:
   - component: {fileID: 2070409192}
   - component: {fileID: 2070409191}
   - component: {fileID: 2070409197}
+  - component: {fileID: 2070409198}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: PNJ1
@@ -15205,15 +15379,12 @@ MonoBehaviour:
   dialogue:
     name: Celestin le Parfait
     sentences:
-    - 'Mon seigneur Raymond de Pereille nous a assure que tout irait bien, l''Eglise
-      catholique souhaite assieger notre maison, notre mont et en veut a notre vie. '
-    - "Il m\u2019a assur\xE9 que, lui vivant, cela n\u2019arriverait pas. Que Monts\xE9gur
-      ne peut finir ainsi. \r\n"
-    - "Mais aujourd\u2019hui, je suis plus inquiet du sort de mon cher Pierre-Roger
-      de Mirepoix, le bon est parti depuis l\u2019aube pour aller chercher du ravitaillement
-      avec sa milice. "
-    - "Il est vrai que depuis que le si\xE8ge \xE0 d\xE9but\xE9 il y a 4 mois d\xE9j\xE0,
-      nous ne nous attendions pas \xE0 ce qu\u2019il puisse durer autant.\n"
+    - dialog_1_0
+    - dialog_1_1
+    - dialog_1_2
+    - dialog_1_3
+    - dialog_1_4
+    - dialog_1_5
   playerStatus: {fileID: 1345415856}
 --- !u!54 &2070409192
 Rigidbody:
@@ -15309,6 +15480,18 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2070409198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070409189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7ee6724d3f884dbd9f5b754a7beda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2074247128
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerSubtitles()
     {
-        Debug.Log("patateuh");
+        //Debug.Log("patateuh");
 
 
         FindObjectOfType<SubtitlesManager>().StartSubtitles(dialogue);

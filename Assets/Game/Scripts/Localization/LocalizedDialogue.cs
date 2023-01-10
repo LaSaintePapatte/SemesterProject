@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class LocalizedDialogue : MonoBehaviour
 {
@@ -10,8 +10,7 @@ public class LocalizedDialogue : MonoBehaviour
     {
         TextMeshProUGUI Text = GetComponent<TextMeshProUGUI>();//get component
         DialogueTrigger dialogueTrigger = GetComponent<DialogueTrigger>();
-        Dialogue dialogue = dialogueTrigger.dialogue;
-
+        Dialogue dialogue = dialogueTrigger.dialogue; 
         for (int i = 0; i < dialogue.sentences.Length; i++)
         {
             string temp = LocalizationSystem.instance.GetLocalizedValue(dialogue.sentences[i]);
@@ -29,7 +28,6 @@ public class LocalizedDialogue : MonoBehaviour
 
             }
         }
-        dialogueTrigger.dialogue = dialogue; //updates text
     }
 
 }
